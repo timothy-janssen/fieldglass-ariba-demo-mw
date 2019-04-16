@@ -13,41 +13,9 @@ app.post('/catalog/search', function (req, res) {
 	const memory = req.body.conversation.memory;
 
  	api.call_api_catalog_search()
- 	.then(function(){
- 		list = {
-    	  "type": "list",
-    	  "content": {
-    	    "elements": [{
-    	        "title": "Lenovo T560",
-    	        "imageUrl": "",
-    	        "subtitle": "i5 / 16 GB / 512 GB / Black",
-    	        "buttons": [{
-    	            "value": "Buy the Lenovo T560",
-    	            "title": "$2,096.10",
-    	            "type": "postback"
-    	        }]
-    	      },{
-    	        "title": "Apple MacBook Pro 13\"",
-    	        "imageUrl": "",
-    	        "subtitle": "i5 / 16 GB / 512 GB / Gray",
-    	        "buttons": [{
-    	            "value": "Buy the Apple MacBook Pro 13\"",
-    	            "title": "$35,000",
-    	            "type": "postback"
-    	        }]
-    	      },{
-    	        "title": "Apple MacBook Pro 15\"",
-    	        "imageUrl": "",
-    	        "subtitle": "i7 / 16 GB / 512 GB / Gray",
-    	        "buttons": [{
-    	            "value": "Buy the Apple MacBook Pro 15\"",
-    	            "title": "$36,000",
-    	            "type": "postback"
-    	        }]
-    	    }]
-    	  },
-    	  "delay": null
-    	};
+ 	.then(function(datd){
+ 		list = data.catalog_list_data
+ 		;
     	
  		res.json({
     	  replies: list
