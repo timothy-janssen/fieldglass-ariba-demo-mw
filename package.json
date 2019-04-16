@@ -19,6 +19,6 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/timothy-janssen/middle-ware-starter.git"
+    "url": "git+https://github.com/timothy-janssen/fieldglass-ariba-demo-mw.git"
   }
 }
