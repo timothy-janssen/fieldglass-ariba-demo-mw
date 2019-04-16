@@ -22,7 +22,7 @@ exports.call_api_catalog_search = function(){
 	.then( function(datd) {
 		console.log('[POST] Request completed')
 		data = {};
-		data.catalog_list_data = {
+		data.catalog_list_data = [{
     	  "type": "list",
     	  "content": {
     	    "elements": [{
@@ -55,7 +55,7 @@ exports.call_api_catalog_search = function(){
     	    }]
     	  },
     	  "delay": null
-    	}
+    	}];
 
 		return data;
 	})
