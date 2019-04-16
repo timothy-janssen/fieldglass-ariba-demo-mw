@@ -11,8 +11,14 @@ exports.call_api_worker_req_create = function(){
 
 
 exports.call_api_catalog_search = function(){	
+	var post_options = {
+	    uri:    "https://jsonplaceholder.typicode.com/posts", // dummy call
+	    method:  "POST",
+	    json:    true,
+	    body: payload
+	};
 
-	return request.post()
+	return request.post(post_options)
 	.then( function(datd) {
 		console.log('[POST] Request completed')
 		data = {};
