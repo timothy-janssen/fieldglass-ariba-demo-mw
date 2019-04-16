@@ -15,7 +15,7 @@ exports.call_api_catalog_search = function(){
 	    uri:    "https://jsonplaceholder.typicode.com/posts", // dummy call
 	    method:  "POST",
 	    json:    true,
-	    body: payload
+	    body: {}
 	};
 
 	return request.post(post_options)
