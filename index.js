@@ -13,7 +13,7 @@ app.post('/catalog/search', function (req, res) {
 	const memory = req.body.conversation.memory;
 
  	api.call_api_catalog_search()
- 	.then(function(datd){
+ 	.then(function(data){
  		list = data.catalog_list_data
  		;
     	
