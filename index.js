@@ -15,7 +15,6 @@ app.post('/catalog/search', function (req, res) {
  	api.call_api_catalog_search()
  	.then(function(data){
  		list = data.catalog_list_data;
- 		console.log(list);
     	
  		res.json({
     	  replies: list

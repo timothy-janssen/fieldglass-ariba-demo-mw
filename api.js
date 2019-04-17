@@ -33,7 +33,7 @@ exports.call_api_catalog_search = function(){
     	        "imageUrl": "",
     	        "subtitle": "i5 / 16 GB / 512 GB / Black",
     	        "buttons": [{
-    	            "value": "Buy the Lenovo T560",
+    	            "value": "Buy the first item",
     	            "title": "$2,096.10",
     	            "type": "postback"
     	        }]
@@ -42,7 +42,7 @@ exports.call_api_catalog_search = function(){
     	        "imageUrl": "",
     	        "subtitle": "i5 / 16 GB / 512 GB / Gray",
     	        "buttons": [{
-    	            "value": "Buy the Apple MacBook Pro 13\"",
+    	            "value": "Buy the second item",
     	            "title": "$35,000",
     	            "type": "postback"
     	        }]
@@ -51,7 +51,7 @@ exports.call_api_catalog_search = function(){
     	        "imageUrl": "",
     	        "subtitle": "i7 / 16 GB / 512 GB / Gray",
     	        "buttons": [{
-    	            "value": "Buy the Apple MacBook Pro 15\"",
+    	            "value": "Buy the third item",
     	            "title": "$36,000",
     	            "type": "postback"
     	        }]
