@@ -23,11 +23,9 @@ exports.call_api_catalog_search = function(){
 		console.log('[POST] Request completed')
 		data = {};
 		data.catalog_list_data = [{
-			type: 'text', 
-			content: 'Here are the options available:'
-		},{
     	  "type": "list",
     	  "content": {
+    	  	"title" : "Which laptop would you like to request?"
     	    "elements": [{
     	        "title": "Lenovo T560",
     	        "imageUrl": "",
