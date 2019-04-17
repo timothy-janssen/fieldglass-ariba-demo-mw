@@ -27,8 +27,12 @@ app.post('/worker_req/create', function (req, res) {
 	
 	const memory = req.body.conversation.memory;
  	api.call_api_worker_req_create()
- 	.then(function(){
-
+ 	.then(function(data){
+ 		qr = data.submit_qr;
+    	
+ 		res.json({
+    	  replies: qr
+    	});
  	})
 		
 });
