@@ -57,7 +57,7 @@ exports.call_api_catalog_search = function(){
 		},{
     	  "type": "list",
     	  "content": {
-    	  	"title" : "Catalog List"
+    	  	"title" : "Catalog List",
     	    "elements": [{
     	        "title": "Apple MacBook Pro 15\"",
     	        "imageUrl": "",
