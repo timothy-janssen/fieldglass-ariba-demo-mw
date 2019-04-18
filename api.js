@@ -67,7 +67,7 @@ exports.call_api_worker_req_submit = function(){
     	        }
     	    }]
     	  },
-    	  "delay": 2
+    	  "delay": null
     	}];
 
 		return data;
