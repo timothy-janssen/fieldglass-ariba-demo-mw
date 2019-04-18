@@ -144,7 +144,7 @@ xports.call_api_catalog_search = function(){
     	        "title": "Marketing Coordinator (4410)",
     	        "imageUrl": "",
     	        "subtitle": "Job Code 50070970",
-    	        "subtitle 2": "Pending Approval by Ada Rekab"
+    	        "subtitle 2": "Pending Approval by Ada Rekab",
     	        "details": {
     	        	"Posted by:": "Jada Baker",
     	        	"Location": "Boston (1710-2017)",
