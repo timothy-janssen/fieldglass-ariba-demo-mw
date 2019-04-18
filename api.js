@@ -12,7 +12,7 @@ exports.call_api_worker_req_create = function(){
 	.then( function(data) {
 		console.log('[POST] Request completed')
 		data = {};
-		data.submit_qr = {
+		data.submit_qr = [{
       		"type": "quickReplies",
       		"content": {
       		  "title": "Okay. Would you like to submit this requisition request",
@@ -30,7 +30,7 @@ exports.call_api_worker_req_create = function(){
       		      "title": "Make Changes"
       		    }
       		  ]
-      	}};
+      	}}];
       	return data;
 	})
 	.catch(function (err) {
