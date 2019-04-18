@@ -57,7 +57,7 @@ exports.call_api_worker_req_submit = function(){
     	    "elements": [{
     	        "title": "Marketing Coordinator (4410)",
     	        "imageUrl": "",
-    	        "subtitle": "Job Code 50070970",s
+    	        "subtitle": "Job Code 50070970",
     	        "subtitle 2": "Pending Approval by Ada Rekab",
     	        "details": {
     	        	"Posted by:": "Jada Baker",
