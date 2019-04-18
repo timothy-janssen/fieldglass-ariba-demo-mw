@@ -124,7 +124,7 @@ exports.call_api_catalog_search = function(){
 	});
 };
 
-xports.call_api_catalog_search = function(){	
+exports.call_api_catalog_search = function(){	
 	var post_options = {
 	    uri:    "https://jsonplaceholder.typicode.com/posts", // dummy call
 	    method:  "POST",
