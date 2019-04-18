@@ -37,6 +37,21 @@ app.post('/worker_req/create', function (req, res) {
 		
 });
 
+app.post('/worker_req/submit', function (req, res) {
+	console.log("[POST] /worker_req/submit");
+	
+	const memory = req.body.conversation.memory;
+ 	api.call_api_worker_req_submit()
+ 	.then(function(data){
+ 		list_card = data.submit_data;
+    	
+ 		res.json({
+    	  replies: list_card
+    	});
+ 	})
+		
+});
+
 // Recast will send a post request to /errors to notify errors
 app.post('/errors', (req, res) => {
    console.error(req.body);
