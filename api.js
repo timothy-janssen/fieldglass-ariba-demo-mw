@@ -38,6 +38,44 @@ exports.call_api_worker_req_create = function(){
 	});
 };
 
+exports.call_api_worker_req_submit = function(){	
+	var post_options = {
+	    uri:    "https://jsonplaceholder.typicode.com/posts", // dummy call
+	    method:  "POST",
+	    json:    true,
+	    body: {}
+	};
+
+	return request.post(post_options)
+	.then( function(data) {
+		console.log('[POST] Request completed')
+		data = {};
+		data.catalog_list_data = [{
+    	  "type": "list",
+    	  "content": {
+    	  	"title" : "Your request has been submitted.",
+    	    "elements": [{
+    	        "title": "Marketing Coordinator (4410)",
+    	        "imageUrl": "",
+    	        "subtitle": "Job Code 50070970",s
+    	        "subtitle 2": "Pending Approval by Ada Rekab",
+    	        "details": {
+    	        	"Posted by:": "Jada Baker",
+    	        	"Location": "Boston (1710-2017)",
+    	        	"Start Date": "AUG/01/2018",
+    	        	"End Date": "AUG/01/2019"
+    	        }
+    	    }]
+    	  },
+    	  "delay": 2
+    	}];
+
+		return data;
+	})
+	.catch(function (err) {
+		//console.log(err);
+	});
+};
 
 exports.call_api_catalog_search = function(){	
 	var post_options = {
@@ -115,45 +153,6 @@ exports.call_api_catalog_search = function(){
     	    }]
     	  },
     	  "delay": null
-    	}];
-
-		return data;
-	})
-	.catch(function (err) {
-		//console.log(err);
-	});
-};
-
-exports.call_api_catalog_search = function(){	
-	var post_options = {
-	    uri:    "https://jsonplaceholder.typicode.com/posts", // dummy call
-	    method:  "POST",
-	    json:    true,
-	    body: {}
-	};
-
-	return request.post(post_options)
-	.then( function(data) {
-		console.log('[POST] Request completed')
-		data = {};
-		data.catalog_list_data = [{
-    	  "type": "list",
-    	  "content": {
-    	  	"title" : "Your request has been submitted.",
-    	    "elements": [{
-    	        "title": "Marketing Coordinator (4410)",
-    	        "imageUrl": "",
-    	        "subtitle": "Job Code 50070970",
-    	        "subtitle 2": "Pending Approval by Ada Rekab",
-    	        "details": {
-    	        	"Posted by:": "Jada Baker",
-    	        	"Location": "Boston (1710-2017)",
-    	        	"Start Date": "AUG/01/2018",
-    	        	"End Date": "AUG/01/2019"
-    	        }
-    	    }]
-    	  },
-    	  "delay": 2
     	}];
 
 		return data;
