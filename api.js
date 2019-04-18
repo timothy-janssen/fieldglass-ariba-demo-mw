@@ -50,7 +50,7 @@ exports.call_api_worker_req_submit = function(){
 	.then( function(data) {
 		console.log('[POST] Request completed')
 		data = {};
-		data.catalog_list_data = [{
+		data.submit_data = [{
     	  "type": "list",
     	  "content": {
     	  	"title" : "Your request has been submitted.",
