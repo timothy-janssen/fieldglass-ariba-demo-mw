@@ -2,16 +2,14 @@ var request = require('request-promise');
 
 exports.call_api_worker_req_create = function(){	
 	var post_options = {
-	    uri:    "https://psg4.fgvms.com/api/oauth2/v2.0/token ", // dummy call
+	    uri:    "https://psg4.fgvms.com/api/oauth2/v2.0/token ", // token call
 	    method:  "POST",
 	    headers: {
 	    	"Content-Type": "application/x-www-form-urlencoded",
 	    	"Authorization": "Basic SmFkYS5CYWtlcjpmaWVsZGdsYXNz",
 	    	"X-ApplicationKey": "- 9tH7u7t8gXGgG8JqZYQ9qtxDKu8Z9vz5"
 	    },
-	    body: {
-	    	"grant_type=client_credentials&response_type=token"
-	    }
+	    body: "grant_type=client_credentials&response_type=token"
 	};
 
 	return request.post(post_options)
