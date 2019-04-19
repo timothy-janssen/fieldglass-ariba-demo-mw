@@ -8,7 +8,7 @@ exports.call_api_worker_req_create = function(){
 	    	"Content-Type": "application/x-www-form-urlencoded",
 	    	"Authorization": "Basic SmFkYS5CYWtlcjpmaWVsZGdsYXNz",
 	    	"X-ApplicationKey": "- 9tH7u7t8gXGgG8JqZYQ9qtxDKu8Z9vz5"
-	    }
+	    },
 	    body: {
 	    	"grant_type=client_credentials&response_type=token"
 	    }
