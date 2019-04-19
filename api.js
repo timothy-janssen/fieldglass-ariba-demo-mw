@@ -39,7 +39,7 @@ exports.call_api_worker_req_create = function(){
       	return data_;
 	})
 	.catch(function (err) {
-		//console.log(err);
+		console.log(err);
 	});
 };
 
