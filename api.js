@@ -2,17 +2,24 @@ var request = require('request-promise');
 
 exports.call_api_worker_req_create = function(){	
 	var post_options = {
-	    uri:    "https://jsonplaceholder.typicode.com/posts", // dummy call
+	    uri:    "https://psg4.fgvms.com/api/oauth2/v2.0/token ", // dummy call
 	    method:  "POST",
-	    json:    true,
-	    body: {}
+	    headers: {
+	    	"Content-Type": "application/x-www-form-urlencoded",
+	    	"Authorization": "Basic SmFkYS5CYWtlcjpmaWVsZGdsYXNz",
+	    	"X-ApplicationKey": "- 9tH7u7t8gXGgG8JqZYQ9qtxDKu8Z9vz5"
+	    }
+	    body: {
+	    	"grant_type=client_credentials&response_type=token"
+	    }
 	};
 
 	return request.post(post_options)
 	.then( function(data) {
 		console.log('[POST] Request completed')
-		data = {};
-		data.submit_qr = [{
+		console.log(data);
+		data_ = {};
+		data_.submit_qr = [{
       		"type": "quickReplies",
       		"content": {
       		  "title": "Okay. Would you like to submit this requisition request",
@@ -31,7 +38,7 @@ exports.call_api_worker_req_create = function(){
       		    }
       		  ]
       	}}];
-      	return data;
+      	return data_;
 	})
 	.catch(function (err) {
 		//console.log(err);
@@ -60,7 +67,7 @@ exports.call_api_worker_req_submit = function(){
     	        "subtitle": "Job Code 50070970",
     	        "subtitle 2": "Pending Approval by Ada Rekab",
     	        "details": {
-    	        	"Posted by:": "Jada Baker",
+    	        	"Posted by": "Jada Baker",
     	        	"Location": "Boston (1710-2017)",
     	        	"Start Date": "AUG/01/2018",
     	        	"End Date": "AUG/01/2019"
