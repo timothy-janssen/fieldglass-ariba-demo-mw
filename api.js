@@ -43,7 +43,7 @@ exports.call_api_worker_req_create = function(){
 	.then( function(token_data) {*/
 
 		post_options = {
-			uri:    "https://psg4.fgvms.com/api/v1/saphire-demo/job-postings", // token call
+			uri:    "https://psg4.fgvms.com/api/v1/saphire-demo/job-postings",
 	    	method:  "POST",
 	    	headers: {
 	    		"Content-Type": "application/json",
@@ -60,8 +60,16 @@ exports.call_api_worker_req_create = function(){
 
 			reply.text = [{
 				"type": "card",
-
-				},{
+				"title": "Create Job Posting",
+				"subtitle": "Not Submitted",
+				"form": {
+					data.jobTitle: data.jobCode,
+					"Posted by": "Jada Baker",
+    	        	"Location": "Boston (1710-2017)",
+    	        	"Start Date": "AUG/01/2018",
+    	        	"End Date": "AUG/01/2019"
+				}
+			},{
       			"type": "quickReplies",
       			"content": {
       			  "title": "Okay. Would you like to submit this requisition request",
