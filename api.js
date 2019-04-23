@@ -17,9 +17,7 @@ exports.get_fg_token = function(memory){
 
 	return request.post(post_options)
 	.then( function(token_data) {
-		memory.fg_token = token_data;
-
-		return memory;
+		return token_data;
 	})	
 }
 
@@ -58,7 +56,7 @@ exports.call_api_worker_req_create = function(){
 			console.log(data);
 
 			reply = {};
-			
+
 			title = data.jobTitle;
 			code = data.jobCode;
 

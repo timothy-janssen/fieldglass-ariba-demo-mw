@@ -28,9 +28,9 @@ app.post('/worker_req/create', function (req, res) {
 	const memory = req.body.conversation.memory;
 
 	if(!memory.fg_token) {
-		api.get_fg_token(memory)
+		api.get_fg_token()
 		.then(function(data){
-			memory = data;
+			memory.fg_token = data;
  			api.call_api_worker_req_create()
  			.then(function(data){
  				qr = data.submit_qr;
