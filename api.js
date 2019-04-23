@@ -171,7 +171,7 @@ exports.call_api_catalog_search = function(query){
 	.then( function(req_data) {
 		console.log('[POST] Request completed')
 		res_data = {};
-		catalog_elements = {};
+		catalog_elements = [];
 
 		var count = 0;
 		req_data.contents.forEach( function(elem){
