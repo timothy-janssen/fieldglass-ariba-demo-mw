@@ -141,85 +141,76 @@ exports.call_api_worker_req_submit = function(){
 	});
 };
 
-exports.call_api_catalog_search = function(){	
+const ordinal_values = [
+	"first",
+	"second",
+	"third",
+	"fourth",
+	"fifth",
+	"sixth",
+	"seventh",
+	"eighth",
+	"ninth",
+	"tenth",
+	"eleventh" ];
+
+
+exports.call_api_catalog_search = function(query){
+	var opts = "?realm=mytestrealm"
+	opts = query ? opts + "&rsqlfilter=QueryTerms==" + query : opts;
 	var post_options = {
-	    uri:    "https://jsonplaceholder.typicode.com/posts", // dummy call
-	    method:  "POST",
+	    uri:    "https://openapi.ariba.com/api/catalog-search/v1/sandbox/search/items" + opts,
+	    method:  "GET",
 	    json:    true,
-	    body: {}
+	    headers: {
+	    	"apiKey": "e874e8a3c6804e52af2de4c4b1fdb242"
+	    }
 	};
 
 	return request.post(post_options)
-	.then( function(data) {
+	.then( function(req_data) {
 		console.log('[POST] Request completed')
-		data = {};
-		data.catalog_list_data = [{
+		res_data = {};
+		catalog_elements = {};
+
+		var count = 0;
+		req_data.contents.forEach( function(elem){
+			var list_item = {
+    	        "title": elem.ShortName,
+    	        "imageUrl": elem.,
+    	        "subtitle": elem.,
+    	        "buttons": [{
+    	            "value": "Buy the " + ordinal_values[count] + " item",
+    	            "title": "Order",
+    	            "type": "postback"
+    	        }],
+    	        "details": {
+    	        	"Supplier Name": elem.SupplierName,
+    	        	"Supplier Part ID": elem.SupplierPartId,
+    	        	"Manufacturer Name": elem.ManufacturerName,
+    	        	"Lead Time": elem.LeadTime,
+    	        	"Description": elem.Description,
+    	        	"Price": elem.Price.Amount,
+    	        	"Currency": elem.Price.Currency.UniqueName
+    	        }
+    	    }
+			catalog_elements.push(list_item);
+			count++;
+		});
+
+		res_data.catalog_list_data = [{
 			"type": "text",
-			"content": "Here's what I found for catalogs with query phrase MacBook:"
+			"content": "Here's what I found for catalogs with query phrase " + query + ":"
 		},{
     	  "type": "list",
     	  "content": {
     	  	"title" : "Catalog List",
-    	    "elements": [{
-    	        "title": "Apple MacBook Pro 15\"",
-    	        "imageUrl": "",
-    	        "subtitle": "2399 USD",
-    	        "buttons": [{
-    	            "value": "Buy the first item",
-    	            "title": "Order",
-    	            "type": "postback"
-    	        }],
-    	        "details": {
-    	        	"Supplier Name": "REDINGTON DISTRIBUTION PTE LTD",
-    	        	"Supplier Part ID": "AD2561",
-    	        	"Manufacturer Name": "Apple",
-    	        	"Lead Time": "3",
-    	        	"Description": "Apple MacBook Pro with 15 inch Retina display - Laptop - 3.2 GHz flash storage 2880 x 1880 - 802.11ac",
-    	        	"Price": "2399",
-    	        	"Currency": "USD"
-    	        }
-    	      },{
-    	        "title": "Apple MacBook Pro 13\"",
-    	        "imageUrl": "",
-    	        "subtitle": "1299 USD",
-    	        "buttons": [{
-    	            "value": "Buy the second item",
-    	            "title": "Order",
-    	            "type": "postback"
-    	        }],
-    	        "details": {
-    	        	"Supplier Name": "REDINGTON DISTRIBUTION PTE LTD",
-    	        	"Supplier Part ID": "AD2841",
-    	        	"Manufacturer Name": "Apple",
-    	        	"Lead Time": "4",
-    	        	"Description": "Apple MacBook Pro with 13 inch Retina display - Laptop - 3.2 GHz flash storage 2480 x 1680 - 802.11ac",
-    	        	"Price": "1299",
-    	        	"Currency": "USD"
-    	        }
-    	      },{
-    	        "title": "Apple MacBook Air",
-    	        "imageUrl": "",
-    	        "subtitle": "1399 USD",
-    	        "buttons": [{
-    	            "value": "Buy the third item",
-    	            "title": "Order",
-    	            "type": "postback"
-    	        }],
-    	        "details": {
-    	        	"Supplier Name": "REDINGTON DISTRIBUTION PTE LTD",
-    	        	"Supplier Part ID": "AD7399",
-    	        	"Manufacturer Name": "Apple",
-    	        	"Lead Time": "5",
-    	        	"Description": "Apple MacBook Air with 13 inch display - Laptop - 3 GHz flash storage 2480 x 1680 - 802.11ac",
-    	        	"Price": "1399",
-    	        	"Currency": "USD"
-    	        }
-    	    }]
+    	    "elements": [ catalog_elements ] 
     	  },
     	  "delay": null
     	}];
 
-		return data;
+		return res_data;
 	})
 	.catch(function (err) {
 		//console.log(err);
