@@ -177,8 +177,8 @@ exports.call_api_catalog_search = function(query){
 		req_data.contents.forEach( function(elem){
 			var list_item = {
     	        "title": elem.ShortName,
-    	        "imageUrl": elem.,
-    	        "subtitle": elem.,
+    	        "imageUrl": elem.Thumbnail,
+    	        "subtitle": elem.QueryTerms,
     	        "buttons": [{
     	            "value": "Buy the " + ordinal_values[count] + " item",
     	            "title": "Order",
