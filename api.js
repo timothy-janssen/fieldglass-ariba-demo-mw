@@ -156,8 +156,8 @@ const ordinal_values = [
 
 
 exports.call_api_catalog_search = function(query){
-	var opts = "?realm=mytestrealm&rsqlfilter=QueryTerms==Laptop"
-	//opts = query ? opts + "&rsqlfilter=QueryTerms==" + query : opts;
+	var opts = "?realm=mytestrealm"
+	opts = query ? opts + "&rsqlfilter=QueryTerms==" + query : opts;
 	var get_options = {
 	    uri:    "https://openapi.ariba.com/api/catalog-search/v1/sandbox/search/items" + opts,
 	    method:  "GET",

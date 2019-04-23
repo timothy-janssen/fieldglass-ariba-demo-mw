@@ -12,7 +12,7 @@ app.post('/catalog/search', function (req, res) {
 
 	const memory = req.body.conversation.memory;
 
- 	api.call_api_catalog_search()
+ 	api.call_api_catalog_search("Laptop")
  	.then(function(data){
     	console.log(data);
  		res.json({
