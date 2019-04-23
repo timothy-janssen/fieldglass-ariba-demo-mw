@@ -156,9 +156,9 @@ const ordinal_values = [
 
 
 exports.call_api_catalog_search = function(query){
-	var opts = "?realm=mytestrealm"
+	var opts = "?realm=mytestrealm&rsqlfilter=QueryTerms=="
 	opts = query ? opts + "&rsqlfilter=QueryTerms==" + query : opts;
-	var post_options = {
+	var get_options = {
 	    uri:    "https://openapi.ariba.com/api/catalog-search/v1/sandbox/search/items" + opts,
 	    method:  "GET",
 	    json:    true,
@@ -167,7 +167,7 @@ exports.call_api_catalog_search = function(query){
 	    }
 	};
 
-	return request.post(post_options)
+	return request.post(get_options)
 	.then( function(req_data) {
 		console.log('[POST] Request completed')
 		res_data = {};
@@ -213,6 +213,6 @@ exports.call_api_catalog_search = function(query){
 		return res_data;
 	})
 	.catch(function (err) {
-		//console.log(err);
+		console.log(err);
 	});
 };
