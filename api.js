@@ -6,8 +6,8 @@ exports.call_api_worker_req_create = function(){
 	    method:  "POST",
 	    headers: {
 	    	"Content-Type": "application/x-www-form-urlencoded",
-	    	"Authorization": "Basic SmFkYS5CYWtlcjpmaWVsZGdsYXNz==",
-	    	"X-ApplicationKey": "9tH7u7t8gXGgG8JqZYQ9qtxDKu8Z9vz5"
+	    	"Authorization": "Basic SmFkYS5CYWtlcjpmaWVsZGdsYXNz",
+	    	"X-ApplicationKey": "5c91f4fdb0c6ee9992ff476f89bf6cf25e589350"
 	    },
 	    form: {
 	    	"grant_type": "client_credentials",
