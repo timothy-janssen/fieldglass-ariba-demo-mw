@@ -190,8 +190,8 @@ exports.call_api_catalog_search = function(query){
     	        	"Manufacturer Name": elem.ManufacturerName,
     	        	"Lead Time": elem.LeadTime,
     	        	"Description": elem.Description,
-    	        	"Price": elem.Price.Amount,
-    	        	"Currency": elem.Price.Currency.UniqueName
+    	        	"Price": elem["Price.Amount"],
+    	        	"Currency": elem["Price.Currency.UniqueName"]
     	        }
     	    }
 			catalog_elements.push(list_item);
