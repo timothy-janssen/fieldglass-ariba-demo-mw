@@ -198,6 +198,8 @@ exports.call_api_catalog_search = function(query){
 			count++;
 		});
 
+		console.log(catalog_elements);
+
 		res_data.catalog_list_data = [{
 			"type": "text",
 			"content": "Here's what I found for catalogs with query phrase " + query + ":"
