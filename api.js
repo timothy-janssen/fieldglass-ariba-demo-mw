@@ -20,7 +20,7 @@ exports.get_fg_token = function(memory){
 		memory.fg_token = token_data;
 
 		return memory;
-	}	
+	})	
 }
 
 
