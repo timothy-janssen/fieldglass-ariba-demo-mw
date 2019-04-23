@@ -1,6 +1,6 @@
 var request = require('request-promise');
 
-exports.call_api_worker_req_create = function(){	
+exports.get_fg_token = function(memory){
 	var post_options = {
 	    uri:    "https://psg4.fgvms.com/api/oauth2/v2.0/token ", // token call
 	    method:  "POST",
@@ -16,43 +16,89 @@ exports.call_api_worker_req_create = function(){
 	};
 
 	return request.post(post_options)
-	.then( function(data) {
-		console.log('[POST] Request completed')
-		console.log(data);
-		data_ = {};
-		data_.submit_qr = [{
-      		"type": "quickReplies",
-      		"content": {
-      		  "title": "Okay. Would you like to submit this requisition request",
-      		  "buttons": [
-      		    {
-      		      "value": "Submit",
-      		      "title": "Submit"
-      		    },
-      		    {
-      		      "value": "Cancel",
-      		      "title": "Cancel"
-      		    },
-      		    {
-      		      "value": "Make Changes",
-      		      "title": "Make Changes"
-      		    }
-      		  ]
-      	}}];
-      	return data_;
-	})
+	.then( function(token_data) {
+		memory.fg_token = token_data;
+
+		return memory;
+	}	
+}
+
+
+exports.call_api_worker_req_create = function(){	
+/*	var post_options = {
+	    uri:    "https://psg4.fgvms.com/api/oauth2/v2.0/token ", // token call
+	    method:  "POST",
+	    headers: {
+	    	"Content-Type": "application/x-www-form-urlencoded",
+	    	"Authorization": "Basic SmFkYS5CYWtlcjpmaWVsZGdsYXNz",
+	    	"X-ApplicationKey": "5c91f4fdb0c6ee9992ff476f89bf6cf25e589350"
+	    },
+	    form: {
+	    	"grant_type": "client_credentials",
+	    	"response_type": "token"
+	    }
+	};
+
+	return request.post(post_options)
+	.then( function(token_data) {*/
+
+		post_options = {
+			uri:    "https://psg4.fgvms.com/api/v1/saphire-demo/job-postings", // token call
+	    	method:  "POST",
+	    	headers: {
+	    		"Content-Type": "application/json",
+	    		"Authorization": token_data.access_token || "",
+	    		"X-ApplicationKey": "9tH7u7t8gXGgG8JqZYQ9qtxDKu8Z9vz5"
+	    	}
+		}
+
+		return request.post(post_options)
+		.then(function(data){
+			console.log('[POST] Request completed')
+			console.log(data);
+			reply = {};
+
+			reply.text = [{
+				"type": "card",
+
+				},{
+      			"type": "quickReplies",
+      			"content": {
+      			  "title": "Okay. Would you like to submit this requisition request",
+      			  "buttons": [
+      			    {
+      			      "value": "Submit",
+      			      "title": "Submit"
+      			    },
+      			    {
+      			      "value": "Cancel",
+      			      "title": "Cancel"
+      			    },
+      			    {
+      			      "value": "Make Changes",
+      			      "title": "Make Changes"
+      			    }
+      			  ]
+      		}}];
+      		return reply;
+		})
+/*	})*/
 	.catch(function (err) {
 		console.log(err);
 	});
 };
 
-exports.call_api_worker_req_submit = function(){	
-	var post_options = {
-	    uri:    "https://jsonplaceholder.typicode.com/posts", // dummy call
-	    method:  "POST",
-	    json:    true,
-	    body: {}
-	};
+exports.call_api_worker_req_submit = function(){
+		post_options = {
+			uri:    "https://psg4.fgvms.com/api/v1/saphire-demo/job-postings", // token call
+	    	method:  "POST",
+	    	headers: {
+	    		"Content-Type": "application/json",
+	    		"Authorization": token_data.access_token || "",
+	    		"X-ApplicationKey": "9tH7u7t8gXGgG8JqZYQ9qtxDKu8Z9vz5"
+	    	}
+		}
+
 
 	return request.post(post_options)
 	.then( function(data) {

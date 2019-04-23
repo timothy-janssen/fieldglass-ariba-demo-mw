@@ -26,14 +26,31 @@ app.post('/worker_req/create', function (req, res) {
 	console.log("[POST] /worker_req/create");
 	
 	const memory = req.body.conversation.memory;
- 	api.call_api_worker_req_create()
- 	.then(function(data){
- 		qr = data.submit_qr;
-    	
- 		res.json({
-    	  replies: qr
-    	});
- 	})
+
+	if(!memory.fg_token) {
+		api.get_fg_token(memory)
+		.then(function(data){
+			memory = data;
+ 			api.call_api_worker_req_create()
+ 			.then(function(data){
+ 				qr = data.submit_qr;
+    			
+ 				res.json({
+    			  replies: qr
+    			});
+ 			})			
+		})
+	} else {
+ 		api.call_api_worker_req_create()
+ 		.then(function(data){
+ 			qr = data.submit_qr;
+    		
+ 			res.json({
+    		  replies: qr
+    		});
+ 		})	
+	}
+
 		
 });
 
