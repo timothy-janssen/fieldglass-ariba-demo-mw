@@ -167,7 +167,7 @@ exports.call_api_catalog_search = function(query){
 	    }
 	};
 
-	return request.post(get_options)
+	return request.get(get_options)
 	.then( function(req_data) {
 		console.log('[POST] Request completed')
 		res_data = {};
