@@ -56,14 +56,18 @@ exports.call_api_worker_req_create = function(){
 		.then(function(data){
 			console.log('[POST] Request completed')
 			console.log(data);
+
 			reply = {};
+			
+			title = data.jobTitle;
+			code = data.jobCode;
 
 			reply.text = [{
 				"type": "card",
 				"title": "Create Job Posting",
 				"subtitle": "Not Submitted",
 				"form": {
-					data.jobTitle: data.jobCode,
+					title: code,
 					"Posted by": "Jada Baker",
     	        	"Location": "Boston (1710-2017)",
     	        	"Start Date": "AUG/01/2018",
