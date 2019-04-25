@@ -61,7 +61,7 @@ exports.call_api_worker_req_create = function(token_data){
 
 			res_data.text = [{
 				"type": "card",
-				"title": "Create Job Posting",
+				"title": "Create Job Posting"/*,
 				"subtitle": "Not Submitted",
 				"form": {
 					title: code,
@@ -69,7 +69,7 @@ exports.call_api_worker_req_create = function(token_data){
     	        	"Location": "Boston (1710-2017)",
     	        	"Start Date": "AUG/01/2018",
     	        	"End Date": "AUG/01/2019"
-				}
+				}*/
 			},{
       			"type": "quickReplies",
       			"content": {
