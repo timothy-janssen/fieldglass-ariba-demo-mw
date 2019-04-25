@@ -112,7 +112,7 @@ exports.call_api_worker_req_submit = function(token_data){
     	        }*/
 		    }
 		}];
-
+		console.log("call_api_worker_req_submit: " + res_data);
 		return res_data;
 	})
 	.catch(function (err) {

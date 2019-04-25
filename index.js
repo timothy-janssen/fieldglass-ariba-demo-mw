@@ -87,6 +87,7 @@ app.post('/worker_req/submit', function (req, res) {
  				res.json({
     			  replies: data
     			});
+    			console.log(res.replies);
  			})
 			.catch(function (err) {
 				console.log(err);
@@ -97,14 +98,14 @@ app.post('/worker_req/submit', function (req, res) {
  		.then(function(data){
  			res.json({
     		  replies: data
-    		});
+    		});	
  		})
 		.catch(function (err) {
 			console.log(err);
 		});		
 	}
 
-	console.log(res.replies);			
+
 });
 
 // Recast will send a post request to /errors to notify errors
