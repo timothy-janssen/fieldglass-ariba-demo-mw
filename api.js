@@ -42,6 +42,8 @@ exports.call_api_worker_req_create = function(token_data){
 	.then( function(token_data) {*/
 		console.log("1: " + token_data);
 		console.log("2: " + token_data.access_token);
+		console.log("2: " + token_data.token_type);
+		console.log("2: " + token_data.expires_in);
 
 		post_options = {
 			uri:    "https://psg4.fgvms.com/api/v1/saphire-demo/job-postings",
