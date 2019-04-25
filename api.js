@@ -59,18 +59,18 @@ exports.call_api_worker_req_create = function(token_data){
 			title = data.jobTitle;
 			code = data.jobCode;
 
-			res_data = [/*{
+			res_data = [{
 				"type": "card",
 				"title": "Create Job Posting",
-				"subtitle": "Not Submitted",
+				"subtitle": "Not Submitted"/*,
 				"form": {
 					title: code,
 					"Posted by": "Jada Baker",
     	        	"Location": "Boston (1710-2017)",
     	        	"Start Date": "AUG/01/2018",
     	        	"End Date": "AUG/01/2019"
-				}
-			},*/{
+				}*/
+			},{
       			"type": "quickReplies",
       			"content": {
       			  "title": "Okay. Would you like to submit this requisition request",
