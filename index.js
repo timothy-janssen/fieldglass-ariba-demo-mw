@@ -71,8 +71,6 @@ app.post('/worker_req/create', function (req, res) {
 			console.log(err);
 		});	
 	}
-
-		
 });
 
 app.post('/worker_req/submit', function (req, res) {
