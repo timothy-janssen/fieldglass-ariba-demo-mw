@@ -58,14 +58,15 @@ exports.call_api_worker_req_create = function(token_data){
 			data = JSON.parse(data_);
 			title = data.jobTitle;
 			code = data.jobCode;
+			status = data.status;
 
 			res_data = [{
 				"type": "list",
 				"content": {
 					"elements": [{
 						"title": "Create Job Posting",
-						"subtitle": "Not Submitted",
-						"subtitle2": title,
+						"subtitle": title,
+						"subtitle2": status,
 						"details": {
 							title: code,
 							"Posted by": "Jada Baker",
@@ -121,16 +122,21 @@ exports.call_api_worker_req_submit = function(token_data){
 
 
 	return request.post(post_options)
-	.then( function(data) {
+	.then( function(data_) {
+		data = JSON.parse(data_);
+		title = data.jobTitle;
+		code = data.jobCode;
+		
 		console.log('[POST] Request completed')
+		
 		res_data = [{
     	  "type": "list",
     	  "content": {
     	  	"title" : "Your request has been submitted.",
     	    "elements": [{
-    	        "title": "Marketing Coordinator (4410)",
+    	        "title":title,
     	        "imageUrl": "",
-    	        "subtitle": "Job Code 50070970",
+    	        "subtitle": code,
     	        "subtitle 2": "Pending Approval by Ada Rekab",
     	        "details": {
     	        	"Posted by": "Jada Baker",
@@ -216,7 +222,7 @@ exports.call_api_catalog_search = function(query){
     	  "type": "list",
     	  "content": {
     	  	"title" : "Catalog List",
-    	    "elements": [ catalog_elements ] 
+    	    "elements": catalog_elements 
     	  },
     	  "delay": null
     	}];
