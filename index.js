@@ -26,7 +26,7 @@ app.post('/catalog/order', function (req, res) {
 
 	const memory = req.body.conversation.memory;
 
- 	api.call_api_catalog_purchase(memory.product, memory.element.rank)
+ 	api.call_api_catalog_purchase(memory.product, memory.element.index)
  	.then(function(data){
     	console.log(data);
  		res.json({
