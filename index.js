@@ -32,20 +32,16 @@ app.post('/worker_req/create', function (req, res) {
 			memory.fg_token = data;
  			api.call_api_worker_req_create(memory.fg_token)
  			.then(function(data){
- 				res_data = data.text;
-    			
  				res.json({
-    			  replies: res_data
+    			  replies: data
     			});
  			})			
 		})
 	} else {
  		api.call_api_worker_req_create(memory.fg_token)
  		.then(function(data){
- 			res_data = data.text;
-    		
  			res.json({
-    		  replies: res_data
+    		  replies: data
     		});
  		})	
 	}
@@ -58,11 +54,9 @@ app.post('/worker_req/submit', function (req, res) {
 	
 	const memory = req.body.conversation.memory;
  	api.call_api_worker_req_submit(memory.fg_token)
- 	.then(function(data){
- 		list_card = data.submit_data;
-    	
+ 	.then(function(data){    	
  		res.json({
-    	  replies: list_card
+    	  replies: data
     	});
  	})
 		

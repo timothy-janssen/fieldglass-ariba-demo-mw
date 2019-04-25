@@ -56,14 +56,12 @@ exports.call_api_worker_req_create = function(token_data){
 			console.log('[POST] Request completed')
 
 			data = JSON.parse(data_);
-			res_data = {};
-
 			title = data.jobTitle;
 			code = data.jobCode;
 
-			res_data.text = [{
+			res_data = [{
 				"type": "card",
-				"title": "Create Job Posting"/*,
+				"title": "Create Job Posting",
 				"subtitle": "Not Submitted",
 				"form": {
 					title: code,
@@ -71,11 +69,11 @@ exports.call_api_worker_req_create = function(token_data){
     	        	"Location": "Boston (1710-2017)",
     	        	"Start Date": "AUG/01/2018",
     	        	"End Date": "AUG/01/2019"
-				}*/
+				}
 			},{
       			"type": "quickReplies",
       			"content": {
-      			  //"title": "Okay. Would you like to submit this requisition request",
+      			  "title": "Okay. Would you like to submit this requisition request",
       			  "buttons": [
       			    {
       			      "value": "Submit",
@@ -117,8 +115,7 @@ exports.call_api_worker_req_submit = function(token_data){
 	return request.post(post_options)
 	.then( function(data) {
 		console.log('[POST] Request completed')
-		res_data = {};
-		res_data.submit_data = [{
+		res_data = [{
     	  "type": "list",
     	  "content": {
     	  	"title" : "Your request has been submitted.",
