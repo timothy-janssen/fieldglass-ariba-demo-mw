@@ -193,13 +193,13 @@ exports.call_api_catalog_search = function(query){
 			var list_item = {
     	        "title": elem.ShortName,
     	        "imageUrl": elem.Thumbnail,
-    	        //"subtitle": elem.QueryTerms,
+    	        "subtitle": elem.QueryTerms,
     	        "buttons": [{
     	            "value": "Buy the " + ordinal_values[count] + " item",
     	            "title": "Order",
     	            "type": "postback"
     	        }],
-    	        /*"details": {
+    	        "details": {
     	        	"Supplier Name": elem.SupplierName,
     	        	"Supplier Part ID": elem.SupplierPartId,
     	        	"Manufacturer Name": elem.ManufacturerName,
@@ -207,7 +207,7 @@ exports.call_api_catalog_search = function(query){
     	        	"Description": elem.Description,
     	        	"Price": elem["Price.Amount"],
     	        	"Currency": elem["Price.Currency.UniqueName"]
-    	        }*/
+    	        }
     	    }
 			catalog_elements.push(list_item);
 			count++;
