@@ -252,8 +252,6 @@ exports.call_api_catalog_purchase = function(query, rank){
 
 		item = req_data[rank];
 		
-		//console.log(catalog_elements);
-
 		res_data = [{
 			"type": 'card',
 			"content": {
