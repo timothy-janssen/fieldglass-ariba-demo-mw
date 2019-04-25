@@ -30,7 +30,7 @@ app.post('/worker_req/create', function (req, res) {
 		api.get_fg_token()
 		.then(function(data){
 			memory.fg_token = data;
- 			api.call_api_worker_req_create()
+ 			api.call_api_worker_req_create(memory.fg_token)
  			.then(function(data){
  				qr = data.submit_qr;
     			
@@ -40,7 +40,7 @@ app.post('/worker_req/create', function (req, res) {
  			})			
 		})
 	} else {
- 		api.call_api_worker_req_create()
+ 		api.call_api_worker_req_create(memory.fg_token)
  		.then(function(data){
  			qr = data.submit_qr;
     		
@@ -57,7 +57,7 @@ app.post('/worker_req/submit', function (req, res) {
 	console.log("[POST] /worker_req/submit");
 	
 	const memory = req.body.conversation.memory;
- 	api.call_api_worker_req_submit()
+ 	api.call_api_worker_req_submit(memory.fg_token)
  	.then(function(data){
  		list_card = data.submit_data;
     	
