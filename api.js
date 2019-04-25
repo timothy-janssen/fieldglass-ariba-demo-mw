@@ -39,6 +39,7 @@ exports.call_api_worker_req_create = function(token_data){
 
 	return request.post(post_options)
 	.then( function(token_data) {*/
+		console.log(token_data.access_token);
 
 		post_options = {
 			uri:    "https://psg4.fgvms.com/api/v1/saphire-demo/job-postings",
@@ -107,6 +108,9 @@ exports.call_api_worker_req_submit = function(token_data){
 	    		"X-ApplicationKey": "9tH7u7t8gXGgG8JqZYQ9qtxDKu8Z9vz5"
 	    	}
 		}
+
+		
+		console.log(token_data.access_token);
 
 
 	return request.post(post_options)
