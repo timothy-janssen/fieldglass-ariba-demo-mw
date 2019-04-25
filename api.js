@@ -252,7 +252,7 @@ exports.call_api_catalog_purchase = function(query, rank){
 		console.log(req_data);
 		console.log(rank)
 
-		item = req_data[rank];
+		item = req_data.contents[rank];
 
 		res_data = [{
 			"type": 'card',
