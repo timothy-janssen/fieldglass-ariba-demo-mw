@@ -40,6 +40,15 @@ exports.call_api_worker_req_create = function(token_data){
 		title = data.jobTitle;
 		code = data.jobCode;
 		status = data.status;
+
+		details = {
+			"Posted by": "Jada Baker",
+           	"Location": "Boston (1710-2017)",
+           	"Start Date": "AUG/01/2018",
+           	"End Date": "AUG/01/2019"
+		}
+		details[title] = code;
+
 		res_data = [{
 			"type": 'text',
 			"content": "Okay. Would you like to submit this requisition request"
@@ -49,13 +58,7 @@ exports.call_api_worker_req_create = function(token_data){
 				"elements": [{
 					"title": "Create Job Posting",
 					"subtitle": title,
-					"details": {
-						title.toString(): code,
-						"Posted by": "Jada Baker",
-            			"Location": "Boston (1710-2017)",
-            			"Start Date": "AUG/01/2018",
-            			"End Date": "AUG/01/2019"
-					}
+					"details": details
 				}]
 			}
 		},{
