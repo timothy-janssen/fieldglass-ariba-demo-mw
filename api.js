@@ -62,8 +62,8 @@ exports.call_api_worker_req_create = function(token_data){
 			res_data = [{
 				"type": "card",
 				"content": {
-					"title": "Create Job Posting",
-					"subtitle": "Not Submitted"/*,
+					"title": "Create Job Posting"/*,
+					"subtitle": "Not Submitted"*//*,
 					"form": {
 						title: code,
 						"Posted by": "Jada Baker",
