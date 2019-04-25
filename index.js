@@ -19,6 +19,9 @@ app.post('/catalog/search', function (req, res) {
     	  replies: data
     	});
  	})
+	.catch(function (err) {
+		console.log(err);
+	});	
 });
 
 app.post('/catalog/order', function (req, res) {
@@ -33,6 +36,9 @@ app.post('/catalog/order', function (req, res) {
     	  replies: data
     	});
  	})
+	.catch(function (err) {
+		console.log(err);
+	});	
 });
 
 app.post('/worker_req/create', function (req, res) {
@@ -49,7 +55,10 @@ app.post('/worker_req/create', function (req, res) {
  				res.json({
     			  replies: data
     			});
- 			})			
+ 			})	
+			.catch(function (err) {
+				console.log(err);
+			});			
 		})
 	} else {
  		api.call_api_worker_req_create(memory.fg_token)
@@ -57,7 +66,10 @@ app.post('/worker_req/create', function (req, res) {
  			res.json({
     		  replies: data
     		});
- 		})	
+ 		})
+		.catch(function (err) {
+			console.log(err);
+		});	
 	}
 
 		
@@ -77,7 +89,10 @@ app.post('/worker_req/submit', function (req, res) {
  				res.json({
     			  replies: data
     			});
- 			})			
+ 			})
+			.catch(function (err) {
+				console.log(err);
+			});				
 		})
 	} else {
  		api.call_api_worker_req_submit(memory.fg_token)
@@ -85,7 +100,10 @@ app.post('/worker_req/submit', function (req, res) {
  			res.json({
     		  replies: data
     		});
- 		})	
+ 		})
+		.catch(function (err) {
+			console.log(err);
+		});		
 	}		
 });
 
