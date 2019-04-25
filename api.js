@@ -249,9 +249,11 @@ exports.call_api_catalog_purchase = function(query, rank){
 	return request.get(get_options)
 	.then( function(req_data) {
 		console.log('[POST] Request completed')
+		console.log(req_data);
+		console.log(rank)
 
 		item = req_data[rank];
-		
+
 		res_data = [{
 			"type": 'card',
 			"content": {
