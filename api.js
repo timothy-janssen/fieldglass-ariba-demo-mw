@@ -49,9 +49,8 @@ exports.call_api_worker_req_create = function(token_data){
 				"elements": [{
 					"title": "Create Job Posting",
 					"subtitle": title,
-					"subtitle2": status,
 					"details": {
-						title: code,
+						title.toString(): code,
 						"Posted by": "Jada Baker",
             			"Location": "Boston (1710-2017)",
             			"Start Date": "AUG/01/2018",
@@ -62,14 +61,13 @@ exports.call_api_worker_req_create = function(token_data){
 		},{
       		"type": "quickReplies",
       		"content": {
-      		 
-      		  "buttons": [{
-      		      "value": "Yes",
-      		      "title": "Yes"
+      		  	"buttons": [{
+      		      	"value": "Yes",
+      		      	"title": "Yes"
       		    },{
-      		      "value": "No",
-      		      "title": "No"
-      		  }]
+      		      	"value": "No",
+      		      	"title": "No"
+      		  	}]
       	}}];
       	console.log(res_data);
       	return res_data;
@@ -99,21 +97,19 @@ exports.call_api_worker_req_submit = function(token_data){
 		console.log('[POST] Request completed /job-postings 2')
 		
 		res_data = [{
-    	  "type": "list",
+			"type": 'text',
+			"content": "Here are the details of your job requisition"
+		},{
+    	  "type": "card",
     	  "content": {
-    	  	"title" : "Your request has been submitted.",
-    	    "elements": [{
-    	        "title":title,
-    	        "imageUrl": "",
-    	        "subtitle": code,
-    	        "subtitle 2": "Pending Approval by Ada Rekab",
-    	        "details": {
+		    	"title": title,
+		    	"subtitle": code,
+		    	"details": {
     	        	"Posted by": "Jada Baker",
     	        	"Location": "Boston (1710-2017)",
     	        	"Start Date": "AUG/01/2018",
     	        	"End Date": "AUG/01/2019"
     	        }
-    	    }]
     	  },
     	  "delay": null
     	}];
@@ -241,11 +237,7 @@ exports.call_api_catalog_purchase = function(query, rank){
       		      "title": "No"
       		  }]
       	}}];
-//
-
-//
-
-// Here are the details of your job requisition
+  
 		return res_data;
 	})
 	.catch(function (err) {
