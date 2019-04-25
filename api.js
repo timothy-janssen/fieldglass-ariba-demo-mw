@@ -89,6 +89,7 @@ exports.call_api_worker_req_create = function(token_data){
       			    }
       			  ]
       		}}];
+      		console.log(res_data);
       		return res_data;
 		})
 /*	})*/
