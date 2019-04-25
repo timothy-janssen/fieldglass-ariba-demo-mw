@@ -104,7 +104,7 @@ app.post('/worker_req/submit', function (req, res) {
 		});		
 	}
 
-	console.log(res);			
+	console.log(res.replies);			
 });
 
 // Recast will send a post request to /errors to notify errors
