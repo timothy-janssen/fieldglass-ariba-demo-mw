@@ -73,7 +73,7 @@ exports.call_api_worker_req_create = function(token_data){
 			},{
       			"type": "quickReplies",
       			"content": {
-      			  "title": "Okay. Would you like to submit this requisition request",
+      			  //"title": "Okay. Would you like to submit this requisition request",
       			  "buttons": [
       			    {
       			      "value": "Submit",
