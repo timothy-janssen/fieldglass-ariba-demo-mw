@@ -75,7 +75,7 @@ exports.call_api_worker_req_create = function(token_data){
     	        		"End Date": "AUG/01/2019"
 					}*/
 				}
-			},{
+			}/*,{
       			"type": "quickReplies",
       			"content": {
       			  "title": "Okay. Would you like to submit this requisition request",
@@ -93,7 +93,7 @@ exports.call_api_worker_req_create = function(token_data){
       			      "title": "Make Changes"
       			    }
       			  ]
-      		}}];
+      		}}*/];
       		console.log(res_data);
       		return res_data;
 		})
