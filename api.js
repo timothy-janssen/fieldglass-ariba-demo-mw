@@ -17,6 +17,7 @@ exports.get_fg_token = function(memory){
 
 	return request.post(post_options)
 	.then( function(token_data) {
+		console.log(token_data);
 		return token_data;
 	})	
 }
@@ -109,7 +110,7 @@ exports.call_api_worker_req_submit = function(token_data){
 	    	}
 		}
 
-		
+
 		console.log(token_data.access_token);
 
 
