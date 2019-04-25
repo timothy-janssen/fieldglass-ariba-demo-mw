@@ -257,9 +257,9 @@ exports.call_api_catalog_purchase = function(query, rank){
 		res_data = [{
 			"type": 'card',
 			"content": {
-		    	title: item.ShortName,
-		    	subtitle: item["Price.Amount"],
-		    	imageUrl: item.Thumbnail
+		    	"title": item.ShortName,
+		    	"subtitle": item["Price.Amount"],
+		    	"imageUrl": item.Thumbnail
 		    }
 		},{
       		"type": "quickReplies",
