@@ -258,7 +258,7 @@ exports.call_api_catalog_purchase = function(query, rank){
 			"type": 'card',
 			"content": {
 		    	title: item.ShortName,
-		    	subtitle: item.["Price.Amount"],
+		    	subtitle: item["Price.Amount"],
 		    	imageUrl: item.Thumbnail
 		    }
 		},{
