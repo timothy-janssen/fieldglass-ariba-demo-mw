@@ -53,14 +53,13 @@ exports.call_api_worker_req_create = function(token_data){
 		return request.post(post_options)
 		.then(function(data){
 			console.log('[POST] Request completed')
-			console.log(data);
 
-			reply = {};
+			res_data = {};
 
 			title = data.jobTitle;
 			code = data.jobCode;
 
-			reply.text = [{
+			res_data.text = [{
 				"type": "card",
 				"title": "Create Job Posting",
 				"subtitle": "Not Submitted",
@@ -90,7 +89,7 @@ exports.call_api_worker_req_create = function(token_data){
       			    }
       			  ]
       		}}];
-      		return reply;
+      		return res_data;
 		})
 /*	})*/
 	.catch(function (err) {
@@ -113,8 +112,8 @@ exports.call_api_worker_req_submit = function(token_data){
 	return request.post(post_options)
 	.then( function(data) {
 		console.log('[POST] Request completed')
-		data = {};
-		data.submit_data = [{
+		res_data = {};
+		res_data.submit_data = [{
     	  "type": "list",
     	  "content": {
     	  	"title" : "Your request has been submitted.",
@@ -134,10 +133,10 @@ exports.call_api_worker_req_submit = function(token_data){
     	  "delay": null
     	}];
 
-		return data;
+		return res_data;
 	})
 	.catch(function (err) {
-		//console.log(err);
+		console.log(err);
 	});
 };
 

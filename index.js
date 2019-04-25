@@ -32,20 +32,20 @@ app.post('/worker_req/create', function (req, res) {
 			memory.fg_token = data;
  			api.call_api_worker_req_create(memory.fg_token)
  			.then(function(data){
- 				qr = data.submit_qr;
+ 				res_data = data.text;
     			
  				res.json({
-    			  replies: qr
+    			  replies: res_data
     			});
  			})			
 		})
 	} else {
  		api.call_api_worker_req_create(memory.fg_token)
  		.then(function(data){
- 			qr = data.submit_qr;
+ 			res_data = data.text;
     		
  			res.json({
-    		  replies: qr
+    		  replies: res_data
     		});
  		})	
 	}
