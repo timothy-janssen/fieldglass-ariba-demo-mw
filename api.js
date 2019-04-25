@@ -215,7 +215,7 @@ exports.call_api_catalog_search = function(query){
 
 		//console.log(catalog_elements);
 
-		res_data.catalog_list_data = [{
+		res_data = [{
 			"type": "text",
 			"content": "Here's what I found in the catalog with query phrase " + query + ":"
 		},{
@@ -226,6 +226,53 @@ exports.call_api_catalog_search = function(query){
     	  },
     	  "delay": null
     	}];
+
+		return res_data;
+	})
+	.catch(function (err) {
+		console.log(err);
+	});
+};
+
+exports.call_api_catalog_purchase = function(query, rank){
+	var opts = "?realm=mytestrealm"
+	opts = query ? opts + "&rsqlfilter=QueryTerms==" + query : opts;
+	var get_options = {
+	    uri:    "https://openapi.ariba.com/api/catalog-search/v1/sandbox/search/items" + opts,
+	    method:  "GET",
+	    json:    true,
+	    headers: {
+	    	"apiKey": "e874e8a3c6804e52af2de4c4b1fdb242"
+	    }
+	};
+
+	return request.get(get_options)
+	.then( function(req_data) {
+		console.log('[POST] Request completed')
+
+		item = req_data[rank];
+		
+		//console.log(catalog_elements);
+
+		res_data = [{
+			"type": 'card',
+			"content": {
+		    	title: item.ShortName,
+		    	subtitle: item.["Price.Amount"],
+		    	imageUrl: item.Thumbnail
+		    }
+		},{
+      		"type": "quickReplies",
+      		"content": {
+      		  "title": "Are you sure you want to order this?",
+      		  "buttons": [{
+      		      "value": "Yes",
+      		      "title": "Yes"
+      		    },{
+      		      "value": "No",
+      		      "title": "No"
+      		  }]
+      	}}];
 
 		return res_data;
 	})
