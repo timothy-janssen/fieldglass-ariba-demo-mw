@@ -41,6 +41,9 @@ exports.call_api_worker_req_create = function(token_data){
 		code = data.jobCode;
 		status = data.status;
 		res_data = [{
+			"type": 'text',
+			"content": "Okay. Would you like to submit this requisition request"
+		},{
 			"type": "list",
 			"content": {
 				"elements": [{
@@ -59,16 +62,13 @@ exports.call_api_worker_req_create = function(token_data){
 		},{
       		"type": "quickReplies",
       		"content": {
-      		  "title": "Okay. Would you like to submit this requisition request",
+      		 
       		  "buttons": [{
-      		      "value": "Submit",
-      		      "title": "Submit"
+      		      "value": "Yes",
+      		      "title": "Yes"
       		    },{
-      		      "value": "Cancel",
-      		      "title": "Cancel"
-      		    },{
-      		      "value": "Make Changes",
-      		      "title": "Make Changes"
+      		      "value": "No",
+      		      "title": "No"
       		  }]
       	}}];
       	console.log(res_data);
@@ -184,7 +184,7 @@ exports.call_api_catalog_search = function(query){
 
 		res_data = [{
 			"type": "text",
-			"content": "Here's what I found in the catalog with query phrase " + query + ":"
+			"content": "Which one would you like to order?"
 		},{
     	  "type": "list",
     	  "content": {
@@ -221,6 +221,9 @@ exports.call_api_catalog_purchase = function(query, rank){
 		item = req_data.contents[rank];
 
 		res_data = [{
+			"type": 'text',
+			"content": "Are you sure you want to order this?"
+		},{
 			"type": 'card',
 			"content": {
 		    	"title": item.ShortName,
@@ -230,7 +233,6 @@ exports.call_api_catalog_purchase = function(query, rank){
 		},{
       		"type": "quickReplies",
       		"content": {
-      		  "title": "Are you sure you want to order this?",
       		  "buttons": [{
       		      "value": "Yes",
       		      "title": "Yes"
@@ -239,7 +241,11 @@ exports.call_api_catalog_purchase = function(query, rank){
       		      "title": "No"
       		  }]
       	}}];
+//
 
+//
+
+// Here are the details of your job requisition
 		return res_data;
 	})
 	.catch(function (err) {
