@@ -67,13 +67,26 @@ app.post('/worker_req/submit', function (req, res) {
 	console.log("[POST] /worker_req/submit");
 	
 	const memory = req.body.conversation.memory;
- 	api.call_api_worker_req_submit(memory.fg_token)
- 	.then(function(data){    	
- 		res.json({
-    	  replies: data
-    	});
- 	})
-		
+
+	if(!memory.fg_token) {
+		api.get_fg_token()
+		.then(function(fg_token_data){
+			memory.fg_token = fg_token_data;
+ 			api.call_api_worker_req_submit(memory.fg_token)
+ 			.then(function(data){
+ 				res.json({
+    			  replies: data
+    			});
+ 			})			
+		})
+	} else {
+ 		api.call_api_worker_req_submit(memory.fg_token)
+ 		.then(function(data){
+ 			res.json({
+    		  replies: data
+    		});
+ 		})	
+	}		
 });
 
 // Recast will send a post request to /errors to notify errors
