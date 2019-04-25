@@ -104,14 +104,13 @@ exports.call_api_worker_req_submit = function(token_data){
     	  "content": {
 		    	"title": title,
 		    	"subtitle": code,
-		    	"details": {
+/*		    	"details": {
     	        	"Posted by": "Jada Baker",
     	        	"Location": "Boston (1710-2017)",
     	        	"Start Date": "AUG/01/2018",
     	        	"End Date": "AUG/01/2019"
-    	        }
-    	  },
-    	  "delay": null
+    	        }*/
+    	  }
     	}];
 
 		return res_data;
