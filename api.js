@@ -18,7 +18,7 @@ exports.get_fg_token = function(memory){
 	return request.post(post_options)
 	.then( function(token_data) {
 		token_data = JSON.parse(token_data);
-		console.log("token: " + token_data);
+		console.log("token: " + token_data.access_token);
 		return token_data;
 	})	
 }
