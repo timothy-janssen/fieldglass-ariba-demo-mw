@@ -69,7 +69,6 @@ exports.call_api_worker_req_create = function(token_data){
       		      	"title": "No"
       		  	}]
       	}}];
-      	console.log(res_data);
       	return res_data;
 	})
 	.catch(function (err) {
@@ -100,18 +99,18 @@ exports.call_api_worker_req_submit = function(token_data){
 			"type": 'text',
 			"content": "Here are the details of your job requisition"
 		},{
-    	  "type": "card",
-    	  "content": {
+			"type": 'card',
+			"content": {
 		    	"title": title,
-		    	"subtitle": code,
+		    	"subtitle": code
 /*		    	"details": {
     	        	"Posted by": "Jada Baker",
     	        	"Location": "Boston (1710-2017)",
     	        	"Start Date": "AUG/01/2018",
     	        	"End Date": "AUG/01/2019"
     	        }*/
-    	  }
-    	}];
+		    }
+		}];
 
 		return res_data;
 	})
