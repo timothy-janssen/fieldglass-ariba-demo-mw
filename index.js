@@ -29,6 +29,7 @@ app.post('/worker_req/create', function (req, res) {
 	if(!memory.fg_token) {
 		api.get_fg_token()
 		.then(function(data){
+			console.log(data);
 			memory.fg_token = data;
  			api.call_api_worker_req_create(memory.fg_token)
  			.then(function(data){
