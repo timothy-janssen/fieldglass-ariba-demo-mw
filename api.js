@@ -17,90 +17,63 @@ exports.get_fg_token = function(memory){
 
 	return request.post(post_options)
 	.then( function(token_data) {
-		console.log(token_data);
+		console.log("token: " + token_data.access_token);
 		return JSON.parse(token_data);
 	})	
 }
 
-
 exports.call_api_worker_req_create = function(token_data){	
-/*	var post_options = {
-	    uri:    "https://psg4.fgvms.com/api/oauth2/v2.0/token ", // token call
-	    method:  "POST",
-	    headers: {
-	    	"Content-Type": "application/x-www-form-urlencoded",
-	    	"Authorization": "Basic SmFkYS5CYWtlcjpmaWVsZGdsYXNz",
-	    	"X-ApplicationKey": "5c91f4fdb0c6ee9992ff476f89bf6cf25e589350"
-	    },
-	    form: {
-	    	"grant_type": "client_credentials",
-	    	"response_type": "token"
-	    }
-	};
+	post_options = {
+		uri:    "https://psg4.fgvms.com/api/v1/saphire-demo/job-postings",
+	   	method:  "POST",
+	   	headers: {
+	   		"Content-Type": "application/json",
+	   		"Authorization": token_data.access_token || "",
+	   		"X-ApplicationKey": "9tH7u7t8gXGgG8JqZYQ9qtxDKu8Z9vz5"
+	   	}
+	}
 
 	return request.post(post_options)
-	.then( function(token_data) {*/
-
-		post_options = {
-			uri:    "https://psg4.fgvms.com/api/v1/saphire-demo/job-postings",
-	    	method:  "POST",
-	    	headers: {
-	    		"Content-Type": "application/json",
-	    		"Authorization": token_data.access_token || "",
-	    		"X-ApplicationKey": "9tH7u7t8gXGgG8JqZYQ9qtxDKu8Z9vz5"
-	    	}
-		}
-
-		return request.post(post_options)
-		.then( function(data_){
-			console.log('[POST] Request completed')
-
-			data = JSON.parse(data_);
-			title = data.jobTitle;
-			code = data.jobCode;
-			status = data.status;
-
-			res_data = [{
-				"type": "list",
-				"content": {
-					"elements": [{
-						"title": "Create Job Posting",
-						"subtitle": title,
-						"subtitle2": status,
-						"details": {
-							title: code,
-							"Posted by": "Jada Baker",
-    	        			"Location": "Boston (1710-2017)",
-    	        			"Start Date": "AUG/01/2018",
-    	        			"End Date": "AUG/01/2019"
-						}
-					}]
-					/*,
-					*/
-				}
-			},{
-      			"type": "quickReplies",
-      			"content": {
-      			  "title": "Okay. Would you like to submit this requisition request",
-      			  "buttons": [
-      			    {
-      			      "value": "Submit",
-      			      "title": "Submit"
-      			    },
-      			    {
-      			      "value": "Cancel",
-      			      "title": "Cancel"
-      			    },
-      			    {
-      			      "value": "Make Changes",
-      			      "title": "Make Changes"
-      			    }
-      			  ]
-      		}}];
-      		console.log(res_data);
-      		return res_data;
-		})
-/*	})*/
+	.then( function(data_){
+		console.log('[POST] Request completed /job-postings')
+		data = JSON.parse(data_);
+		title = data.jobTitle;
+		code = data.jobCode;
+		status = data.status;
+		res_data = [{
+			"type": "list",
+			"content": {
+				"elements": [{
+					"title": "Create Job Posting",
+					"subtitle": title,
+					"subtitle2": status,
+					"details": {
+						title: code,
+						"Posted by": "Jada Baker",
+            			"Location": "Boston (1710-2017)",
+            			"Start Date": "AUG/01/2018",
+            			"End Date": "AUG/01/2019"
+					}
+				}]
+			}
+		},{
+      		"type": "quickReplies",
+      		"content": {
+      		  "title": "Okay. Would you like to submit this requisition request",
+      		  "buttons": [{
+      		      "value": "Submit",
+      		      "title": "Submit"
+      		    },{
+      		      "value": "Cancel",
+      		      "title": "Cancel"
+      		    },{
+      		      "value": "Make Changes",
+      		      "title": "Make Changes"
+      		  }]
+      	}}];
+      	console.log(res_data);
+      	return res_data;
+	})
 	.catch(function (err) {
 		console.log(err);
 	});
@@ -117,17 +90,13 @@ exports.call_api_worker_req_submit = function(token_data){
 	    	}
 		}
 
-
-		console.log(token_data.access_token);
-
-
 	return request.post(post_options)
 	.then( function(data_) {
 		data = JSON.parse(data_);
 		title = data.jobTitle;
 		code = data.jobCode;
 		
-		console.log('[POST] Request completed')
+		console.log('[POST] Request completed /job-postings 2')
 		
 		res_data = [{
     	  "type": "list",
@@ -213,8 +182,6 @@ exports.call_api_catalog_search = function(query){
 			count++;
 		});
 
-		//console.log(catalog_elements);
-
 		res_data = [{
 			"type": "text",
 			"content": "Here's what I found in the catalog with query phrase " + query + ":"
@@ -223,8 +190,7 @@ exports.call_api_catalog_search = function(query){
     	  "content": {
     	  	"title" : "Catalog List",
     	    "elements": catalog_elements 
-    	  },
-    	  "delay": null
+    	  }
     	}];
 
 		return res_data;
@@ -258,7 +224,7 @@ exports.call_api_catalog_purchase = function(query, rank){
 			"type": 'card',
 			"content": {
 		    	"title": item.ShortName,
-		    	"subtitle": item["Price.Amount"],
+		    	"subtitle": item["Price.Amount"] + " " + item["Price.Currency.UniqueName"],
 		    	"imageUrl": item.Thumbnail
 		    }
 		},{
