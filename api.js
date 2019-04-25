@@ -64,7 +64,7 @@ exports.call_api_worker_req_create = function(token_data){
 				"content": {
 					"elements": [{
 						"title": "Create Job Posting",
-						"subtitle": "Not Submitted"
+						"subtitle": "Not Submitted",
 						"form": {
 							title: code,
 							"Posted by": "Jada Baker",
