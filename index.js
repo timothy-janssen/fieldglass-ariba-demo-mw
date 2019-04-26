@@ -10,14 +10,15 @@ app.use(bodyParser.json());
 app.post('/catalog/search', function (req, res) {
 	console.log("[POST] /catalog/search");
 
-	const memory = req.body.conversation.memory;
+	var memory = req.body.conversation.memory;
 
  	api.call_api_catalog_search(memory.product)
  	.then(function(data){
- 		res.body.conversation.memory.catalog = data;
+ 		memory.catalog = data;
     	console.log(data);
  		res.json({
-    	  replies: data
+    	  replies: data,
+    	  memory: memory
     	});
  	})
 	.catch(function (err) {
@@ -28,7 +29,7 @@ app.post('/catalog/search', function (req, res) {
 app.post('/catalog/order', function (req, res) {
 	console.log("[POST] /catalog/order");
 
-	const memory = req.body.conversation.memory;
+	var memory = req.body.conversation.memory;
 
  	api.call_api_catalog_purchase(memory.product, memory.element.index)
  	.then(function(data){
@@ -45,7 +46,7 @@ app.post('/catalog/order', function (req, res) {
 app.post('/catalog/submit', function (req, res) {
 	console.log("[POST] /catalog/order");
 
-	const memory = req.body.conversation.memory;
+	var memory = req.body.conversation.memory;
 
  	api.call_api_catalog_submit(memory)
  	.then(function(data){
