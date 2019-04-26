@@ -200,7 +200,7 @@ exports.call_api_catalog_purchase = function(memory){
 	res_data.reply = [{
 		"type": 'text',
 		"content": "Are you sure you want to order this?"
-	},{
+	}/*,{
 		"type": 'card',
 		"content": {
 	    	"title": item.ShortName,
@@ -217,7 +217,7 @@ exports.call_api_catalog_purchase = function(memory){
     	      "value": "No",
     	      "title": "No"
     	  }]
-    }}];
+    }}*/];
 
     res_data.selected_product = item;
   
