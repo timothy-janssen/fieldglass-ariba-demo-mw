@@ -134,7 +134,7 @@ exports.call_api_catalog_search = function(memory){
 
 	var query;
 	if (query_obj) {
-		query = query_obj.raw;
+		query = query_obj[0].raw;
 	}
 
 	var opts = "?realm=mytestrealm"
@@ -142,7 +142,7 @@ exports.call_api_catalog_search = function(memory){
 
 	console.log("query_obj: " + query_obj);
 	console.log("query: " + query);
-	
+
 	var get_options = {
 	    uri:    "https://openapi.ariba.com/api/catalog-search/v1/sandbox/search/items" + opts,
 	    method:  "GET",
