@@ -240,7 +240,7 @@ exports.call_api_catalog_purchase = function(query, rank){
 exports.call_api_catalog_submit = function(memory){
 
 	selected_product = {
-		"name": "Inspiron 11 3000" //memory.selected_product.ShortName
+		"name": "Inspiron 11 3000", //memory.selected_product.ShortName
 		"price_text": "250 USD" //memory.selected_product["Price.Amount"] + " " + memory.selected_product["Price.Currency.UniqueName"]
 	}
 
