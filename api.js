@@ -131,20 +131,20 @@ const ordinal_values = [
 
 exports.call_api_catalog_search = function(memory){
 
-	console.log("memory.product: "      + memory.product );
-	console.log("memory.organization: " + memory.organization);
+	var query_obj = memory.product ? JSON.parse(memory.product) : JSON.parse(memory.organization);
+	var query     = query_obj      ? query_obj[0].raw			: undefined;
 
-	var query;
+
+/*	var query;
 	if(memory.product) {
 		query = JSON.parse(memory.product)[0].raw;
 	} else if (memory.organization) {
 		query = JSON.parse(memory.organization)[0].raw;
-	}
+	}*/
 
-	console.log("query: " + query);
+
 	
-	var opts 		= query 		&& true ? "?realm=mytestrealm&rsqlfilter=QueryTerms==" + query : "?realm=mytestrealm";
-	console.log("opts: " + opts);
+	var opts 		= query ? "?realm=mytestrealm&rsqlfilter=QueryTerms==" + query : "?realm=mytestrealm";
 
 	var get_options = {
 	    uri:    "https://openapi.ariba.com/api/catalog-search/v1/sandbox/search/items" + opts,
