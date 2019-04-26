@@ -137,7 +137,7 @@ exports.call_api_catalog_search = function(memory){
 	var query_obj 	= memory.product && true ? memory.product   									  : memory.organization;
 	console.log("query_obj: " + query_obj);
 
-	var query     	= query_obj     && true ? query_obj[0].raw 									  : undefined;
+	var query     	= query_obj !== '' ? query_obj[0].raw 									  : undefined;
 	console.log("query: " + query);
 	
 	var opts 		= query 		&& true ? "?realm=mytestrealm&rsqlfilter=QueryTerms==" + query : "?realm=mytestrealm";
