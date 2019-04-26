@@ -14,7 +14,7 @@ app.post('/catalog/search', function (req, res) {
 
  	api.call_api_catalog_search(memory.product)
  	.then(function(data){
- 		memory.catalog = data;
+ 		memory.catalog = data[1].content.elements;
     	console.log(data);
  		res.json({
     	  	replies: data,
@@ -33,16 +33,15 @@ app.post('/catalog/order', function (req, res) {
 
 	var memory = req.body.conversation.memory;
 
- 	api.call_api_catalog_purchase(memory.product, memory.element.index)
- 	.then(function(data){
-    	console.log(data);
- 		res.json({
-    	  replies: data
-    	});
- 	})
-	.catch(function (err) {
-		console.log(err);
-	});	
+ 	data = api.call_api_catalog_purchase(memory);
+ 	memory.selected_product = data.selected_product;
+ 	
+ 	res.json({
+    	replies: data.reply,
+      	conversation: {
+   	  		memory: memory
+       	}    	  
+   	});
 });
 
 app.post('/catalog/submit', function (req, res) {

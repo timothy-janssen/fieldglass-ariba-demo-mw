@@ -190,51 +190,38 @@ exports.call_api_catalog_search = function(query){
 	});
 };
 
-exports.call_api_catalog_purchase = function(query, rank){
-	var opts = "?realm=mytestrealm"
-	opts = query ? opts + "&rsqlfilter=QueryTerms==" + query : opts;
-	var get_options = {
-	    uri:    "https://openapi.ariba.com/api/catalog-search/v1/sandbox/search/items" + opts,
-	    method:  "GET",
-	    json:    true,
-	    headers: {
-	    	"apiKey": "e874e8a3c6804e52af2de4c4b1fdb242"
+exports.call_api_catalog_purchase = function(memory){
+
+	rank = memory.element.index;
+	catalog = memory.catalog;
+	item = catalog[rank];
+
+
+	res_data.reply = [{
+		"type": 'text',
+		"content": "Are you sure you want to order this?"
+	},{
+		"type": 'card',
+		"content": {
+	    	"title": item.ShortName,
+	    	"subtitle": item["Price.Amount"] + " " + item["Price.Currency.UniqueName"],
+	    	"imageUrl": item.Thumbnail
 	    }
-	};
+	},{
+    	"type": "quickReplies",
+    	"content": {
+    	  "buttons": [{
+    	      "value": "Yes",
+    	      "title": "Yes"
+    	    },{
+    	      "value": "No",
+    	      "title": "No"
+    	  }]
+    }}];
 
-	return request.get(get_options)
-	.then( function(req_data) {
-		console.log('[POST] Request completed')
-
-		item = req_data.contents[rank];
-
-		res_data = [{
-			"type": 'text',
-			"content": "Are you sure you want to order this?"
-		},{
-			"type": 'card',
-			"content": {
-		    	"title": item.ShortName,
-		    	"subtitle": item["Price.Amount"] + " " + item["Price.Currency.UniqueName"],
-		    	"imageUrl": item.Thumbnail
-		    }
-		},{
-      		"type": "quickReplies",
-      		"content": {
-      		  "buttons": [{
-      		      "value": "Yes",
-      		      "title": "Yes"
-      		    },{
-      		      "value": "No",
-      		      "title": "No"
-      		  }]
-      	}}];
+    res_data.selected_product = item;
   
-		return res_data;
-	})
-	.catch(function (err) {
-		console.log(err);
-	});
+	return res_data;
 };
 
 exports.call_api_catalog_submit = function(memory){
