@@ -44,6 +44,7 @@ exports.call_api_worker_req_create = function(token_data, memory){
 		status = data.status;
 
 		var date = new Date();
+		date.setDate(date.getDate() + 1);
 		start_date = dateFormat(date, "mmmm dS, yyyy");
 		date.setDate(date.getDate() + memory.duration.days);
 		end_date = dateFormat(date, "mmmm dS, yyyy");
