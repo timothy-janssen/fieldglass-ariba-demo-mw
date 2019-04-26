@@ -43,12 +43,35 @@ exports.call_api_worker_req_create = function(token_data, memory){
 		code = data.jobCode;
 		status = data.status;
 
-/*		var date = new Date();
-		start_date = dateFormat(date, "mmmm dS, yyyy");
-		date.setDate(date.getDate() + memory.duration.days);
-		end_date = dateFormat(now, "mmmm dS, yyyy");*/
+	/*		var date = new Date();
+			start_date = dateFormat(date, "mmmm dS, yyyy");
+			date.setDate(date.getDate() + memory.duration.days);
+			end_date = dateFormat(now, "mmmm dS, yyyy");*/
+
+		start_date = "AUG/01/2018";
+		end_date = "AUG/01/2019";
 
 		res_data = [{
+			"type": 'text',
+			"content": "Please confirm the following details:\n" +
+					   "Job Title: " + title +
+					   "Job Code: " + code + "\n" +
+					   "Start Date: " + start_date + "\n" +
+					   "End Date: " + end_date + "\n\n" +
+					   "Should I proceed?"					   
+		},{
+      		"type": "quickReplies",
+      		"content": {
+      		  	"buttons": [{
+      		      	"value": "Yes",
+      		      	"title": "Yes"
+      		    },{
+      		      	"value": "No",
+      		      	"title": "No"
+      		  	}]
+      	}}];
+
+		/*res_data = [{
 			"type": 'text',
 			"content": "Okay. Would you like to submit this requisition request"
 		},{
@@ -76,7 +99,7 @@ exports.call_api_worker_req_create = function(token_data, memory){
       		      	"value": "No",
       		      	"title": "No"
       		  	}]
-      	}}];
+      	}}];*/
       	return res_data;
 	})
 	.catch(function (err) {
@@ -105,7 +128,7 @@ exports.call_api_worker_req_submit = function(token_data){
 		
 		res_data = [{
 			"type": 'text',
-			"content": "Here are the details of your job requisition"
+			"content": "The following contingent worker requisition has been submitted"
 		},{
 			"type": 'card',
 			"content": {
