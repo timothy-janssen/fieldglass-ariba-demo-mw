@@ -1,5 +1,5 @@
 var request = require('request-promise');
-var dateFormat = require('dateformat');
+//var dateFormat = require('dateformat');
 
 exports.get_fg_token = function(memory){
 	var post_options = {
@@ -43,10 +43,10 @@ exports.call_api_worker_req_create = function(token_data, memory){
 		code = data.jobCode;
 		status = data.status;
 
-		var date = new Date();
+/*		var date = new Date();
 		start_date = dateFormat(date, "mmmm dS, yyyy");
 		date.setDate(date.getDate() + memory.duration.days);
-		end_date = dateFormat(now, "mmmm dS, yyyy");
+		end_date = dateFormat(now, "mmmm dS, yyyy");*/
 
 		res_data = [{
 			"type": 'text',
