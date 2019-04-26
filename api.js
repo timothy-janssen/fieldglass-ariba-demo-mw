@@ -195,7 +195,7 @@ exports.call_api_catalog_purchase = function(memory){
 	rank = memory.element.index;
 	catalog = memory.catalog;
 	item = catalog[rank];
-
+	console.log(item);
 
 	res_data.reply = [{
 		"type": 'text',
