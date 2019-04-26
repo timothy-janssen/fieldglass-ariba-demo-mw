@@ -17,8 +17,10 @@ app.post('/catalog/search', function (req, res) {
  		memory.catalog = data;
     	console.log(data);
  		res.json({
-    	  replies: data,
-    	  memory: memory
+    	  	replies: data,
+    	  	conversation: {
+    	  		memory: memory
+          	}
     	});
  	})
 	.catch(function (err) {
