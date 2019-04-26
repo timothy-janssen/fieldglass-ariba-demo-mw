@@ -132,11 +132,8 @@ const ordinal_values = [
 exports.call_api_catalog_search = function(memory){
 	query_obj = memory.product ? memory.product : memory.organization;
 
-	var query;
-	if (query_obj !== undefined) {
-		query = query_obj[0].raw;
-	}
-
+	var query = query_obj ? query_obj[0].raw : undefined;
+	
 	var opts = "?realm=mytestrealm"
 	opts = query ? opts + "&rsqlfilter=QueryTerms==" + query : opts;
 
