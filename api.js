@@ -131,16 +131,16 @@ const ordinal_values = [
 
 exports.call_api_catalog_search = function(memory){
 
-	console.log("memory.product  : "    + memory.product );
+	console.log("memory.product: "      + memory.product );
 	console.log("memory.organization: " + memory.organization);
 
-	var query_obj 	= memory.product != undefined ? memory.product   									  : memory.organization;
+	var query_obj 	= memory.product && true ? memory.product   									  : memory.organization;
 	console.log("query_obj: " + query_obj);
 
-	var query     	= query_obj      != undefined ? query_obj[0].raw 									  : undefined;
+	var query     	= query_obj     && true ? query_obj[0].raw 									  : undefined;
 	console.log("query: " + query);
 	
-	var opts 		= query 		 != undefined ? "?realm=mytestrealm&rsqlfilter=QueryTerms==" + query : "?realm=mytestrealm";
+	var opts 		= query 		&& true ? "?realm=mytestrealm&rsqlfilter=QueryTerms==" + query : "?realm=mytestrealm";
 	console.log("opts: " + opts);
 
 	var get_options = {
