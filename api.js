@@ -129,7 +129,10 @@ const ordinal_values = [
 	"eleventh" ];
 
 
-exports.call_api_catalog_search = function(query){
+exports.call_api_catalog_search = function(memory){
+	query_obj = memory.product || memory.organization;
+	query = query_obj.raw;
+
 	var opts = "?realm=mytestrealm"
 	opts = query ? opts + "&rsqlfilter=QueryTerms==" + query : opts;
 	var get_options = {
@@ -172,7 +175,7 @@ exports.call_api_catalog_search = function(query){
 			count++;
 		});
 
-		res_data = [{
+		res_data.reply = [{
 			"type": "text",
 			"content": "Which one would you like to order?"
 		},{
@@ -182,6 +185,8 @@ exports.call_api_catalog_search = function(query){
     	    "elements": catalog_elements 
     	  }
     	}];
+
+    	res_data.catalog_elements = catalog_elements;
 
 		return res_data;
 	})
@@ -195,7 +200,6 @@ exports.call_api_catalog_purchase = function(memory){
 	rank = memory.element.index;
 	catalog = memory.catalog;
 	item = catalog[rank];
-	console.log(item);
 
 	res_data.reply = [{
 		"type": 'text',
