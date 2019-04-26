@@ -139,7 +139,7 @@ exports.call_api_catalog_search = function(memory){
 		console.log("product")
 		query = memory.product[0].raw;
 	} else if (memory.organization) {
-		console.log(memory.organization[0])
+		console.log("memory.organization[0]: " + memory.organization[0])
 		query = memory.organization[0].raw;
 	}
 
