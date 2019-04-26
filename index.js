@@ -10,8 +10,9 @@ app.use(bodyParser.json());
 app.post('/catalog/search', function (req, res) {
 	console.log("[POST] /catalog/search");
 
-	var memory = JSON.parse(req.body.conversation.memory);
-
+	var memory_ = req.body.conversation.memory;
+	var memory  = JSON.parse(memory_);
+	
  	api.call_api_catalog_search(memory)
  	.then(function(data){
  		memory.catalog = data.catalog_elements;
