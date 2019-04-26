@@ -92,7 +92,7 @@ exports.call_api_worker_req_submit = function(token_data){
 	return request.post(post_options)
 	.then( function(data_) {
 		data = JSON.parse(data_);
-		title = data.jobTitle;
+		title = data.jobTitle.replace(/\D/,'');;;
 		code = data.jobCode;
 		
 		console.log('[POST] Request completed /job-postings 2')
