@@ -40,7 +40,7 @@ exports.call_api_worker_req_create = function(token_data, memory){
 		console.log('[POST] Request completed /job-postings')
 		data = JSON.parse(data_);
 		title = data.jobTitle;
-		code = data.jobCode;
+		code = data.jobCode.replace(/\D/g,'');;
 		status = data.status;
 
 	/*		var date = new Date();
@@ -54,7 +54,7 @@ exports.call_api_worker_req_create = function(token_data, memory){
 		res_data = [{
 			"type": 'text',
 			"content": "Please confirm the following details:\n" +
-					   "Job Title: " + title +
+					   "Job Title: " + title + "\n" +
 					   "Job Code: " + code + "\n" +
 					   "Start Date: " + start_date + "\n" +
 					   "End Date: " + end_date + "\n\n" +
@@ -71,35 +71,6 @@ exports.call_api_worker_req_create = function(token_data, memory){
       		  	}]
       	}}];
 
-		/*res_data = [{
-			"type": 'text',
-			"content": "Okay. Would you like to submit this requisition request"
-		},{
-			"type": "list",
-			"content": {
-				"elements": [{
-					"title": "Create Job Posting",
-					"subtitle": title,
-					"details": {
-						"Job Code": code,
-						"Posted by": "Jada Baker",
-            			"Location": "Boston (1710-2017)",
-            			"Start Date": "AUG/01/2018",
-            			"End Date": "AUG/01/2019"
-					}
-				}]
-			}
-		},{
-      		"type": "quickReplies",
-      		"content": {
-      		  	"buttons": [{
-      		      	"value": "Yes",
-      		      	"title": "Yes"
-      		    },{
-      		      	"value": "No",
-      		      	"title": "No"
-      		  	}]
-      	}}];*/
       	return res_data;
 	})
 	.catch(function (err) {
@@ -186,7 +157,7 @@ exports.call_api_catalog_search = function(query){
     	            "value": "Buy the " + ordinal_values[count] + " item",
     	            "title": "Order",
     	            "type": "postback"
-    	        }],
+    	        }]/*,
     	        "details": {
     	        	"Supplier Name": elem.SupplierName,
     	        	"Supplier Part ID": elem.SupplierPartId,
@@ -195,7 +166,7 @@ exports.call_api_catalog_search = function(query){
     	        	"Description": elem.Description,
     	        	"Price": elem["Price.Amount"],
     	        	"Currency": elem["Price.Currency.UniqueName"]
-    	        }
+    	        }*/
     	    }
 			catalog_elements.push(list_item);
 			count++;
@@ -234,8 +205,6 @@ exports.call_api_catalog_purchase = function(query, rank){
 	return request.get(get_options)
 	.then( function(req_data) {
 		console.log('[POST] Request completed')
-		console.log(req_data);
-		console.log(rank)
 
 		item = req_data.contents[rank];
 
@@ -267,3 +236,24 @@ exports.call_api_catalog_purchase = function(query, rank){
 		console.log(err);
 	});
 };
+
+exports.call_api_catalog_submit = function(memory){
+
+	selected_product = {
+		"name": "Inspiron 11 3000" //memory.selected_product.ShortName
+		"price_text": "250 USD" //memory.selected_product["Price.Amount"] + " " + memory.selected_product["Price.Currency.UniqueName"]
+	}
+
+	res_data = [{
+		"type": 'text',
+		"content": "Your order has been submitted."
+	},{
+		"type": 'card',
+		"content": {
+			"title": selected_product.name,
+			"subtitle": selected_product.price_text,
+			"imageUrl": ''
+		}
+	}];
+	return res_data;
+}

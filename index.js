@@ -14,6 +14,7 @@ app.post('/catalog/search', function (req, res) {
 
  	api.call_api_catalog_search(memory.product)
  	.then(function(data){
+ 		req.body.conversation.memory.catalog = data;
     	console.log(data);
  		res.json({
     	  replies: data
@@ -30,6 +31,23 @@ app.post('/catalog/order', function (req, res) {
 	const memory = req.body.conversation.memory;
 
  	api.call_api_catalog_purchase(memory.product, memory.element.index)
+ 	.then(function(data){
+    	console.log(data);
+ 		res.json({
+    	  replies: data
+    	});
+ 	})
+	.catch(function (err) {
+		console.log(err);
+	});	
+});
+
+app.post('/catalog/submit', function (req, res) {
+	console.log("[POST] /catalog/order");
+
+	const memory = req.body.conversation.memory;
+
+ 	api.call_api_catalog_submit(memory)
  	.then(function(data){
     	console.log(data);
  		res.json({
