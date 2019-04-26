@@ -39,7 +39,7 @@ exports.call_api_worker_req_create = function(token_data, memory){
 	.then( function(data_){
 		console.log('[POST] Request completed /job-postings')
 		data = JSON.parse(data_);
-		title = data.jobTitle;
+		title = data.jobTitle.replace(/[0-9]/g, '').replace(/[{()}]/g, '');
 		code = data.jobCode.replace(/\D/g,'');;
 		status = data.status;
 
@@ -92,7 +92,7 @@ exports.call_api_worker_req_submit = function(token_data){
 	return request.post(post_options)
 	.then( function(data_) {
 		data = JSON.parse(data_);
-		title = data.jobTitle.replace(/[0-9]/g, '').replace(/[{()}]/g, '')
+		title = data.jobTitle;
 		code = data.jobCode;
 		
 		console.log('[POST] Request completed /job-postings 2')
