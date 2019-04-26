@@ -104,7 +104,7 @@ exports.call_api_worker_req_submit = function(token_data){
 			"content": {
 		    	"title": title,
 		    	"subtitle": code,
-		    	"imageUrl": ''
+		    	"imageUrl": '',
 		    	"details": {
     	        	"Posted by": "Jada Baker",
     	        	"Location": "Boston (1710-2017)",
