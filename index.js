@@ -14,7 +14,7 @@ app.post('/catalog/search', function (req, res) {
 
  	api.call_api_catalog_search(memory.product)
  	.then(function(data){
- 		req.body.conversation.memory.catalog = data;
+ 		res.body.conversation.memory.catalog = data;
     	console.log(data);
  		res.json({
     	  replies: data
