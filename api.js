@@ -135,12 +135,14 @@ exports.call_api_catalog_search = function(memory){
 	console.log("memory.organization: " + memory.organization);
 
 	var query;
-	if(memory.product && memory.product[0] && true) {
+	if(memory.product && Array.isArray(memory.product)) {
+		console.log("product")
 		query = memory.product[0].raw;
-	} else if (memory.organization && memory.organization[0] && true) {
+	} else if (memory.organization && Array.isArray(organization) {
+		console.log("organization")
 		query = memory.organization[0].raw;
 	}
-	
+
 	console.log("query: " + query);
 	
 	var opts 		= query 		&& true ? "?realm=mytestrealm&rsqlfilter=QueryTerms==" + query : "?realm=mytestrealm";
