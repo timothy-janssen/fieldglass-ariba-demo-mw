@@ -84,7 +84,6 @@ app.post('/worker_req/submit', function (req, res) {
 			memory.fg_token = fg_token_data;
  			api.call_api_worker_req_submit(memory.fg_token)
  			.then(function(data){
- 				console.log("/submit: " + data);
  				res.json({
     			  replies: data
     			});
