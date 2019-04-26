@@ -157,7 +157,7 @@ exports.call_api_catalog_search = function(query){
     	            "value": "Buy the " + ordinal_values[count] + " item",
     	            "title": "Order",
     	            "type": "postback"
-    	        }]/*,
+    	        }],
     	        "details": {
     	        	"Supplier Name": elem.SupplierName,
     	        	"Supplier Part ID": elem.SupplierPartId,
@@ -166,7 +166,7 @@ exports.call_api_catalog_search = function(query){
     	        	"Description": elem.Description,
     	        	"Price": elem["Price.Amount"],
     	        	"Currency": elem["Price.Currency.UniqueName"]
-    	        }*/
+    	        }
     	    }
 			catalog_elements.push(list_item);
 			count++;
@@ -200,7 +200,7 @@ exports.call_api_catalog_purchase = function(memory){
 	res_data.reply = [{
 		"type": 'text',
 		"content": "Are you sure you want to order this?"
-	}/*,{
+	},{
 		"type": 'card',
 		"content": {
 	    	"title": item.ShortName,
@@ -217,7 +217,7 @@ exports.call_api_catalog_purchase = function(memory){
     	      "value": "No",
     	      "title": "No"
     	  }]
-    }}*/];
+    }}];
 
     res_data.selected_product = item;
   
@@ -226,19 +226,14 @@ exports.call_api_catalog_purchase = function(memory){
 
 exports.call_api_catalog_submit = function(memory){
 
-	selected_product = {
-		"name": "Inspiron 11 3000", //memory.selected_product.ShortName
-		"price_text": "250 USD" //memory.selected_product["Price.Amount"] + " " + memory.selected_product["Price.Currency.UniqueName"]
-	}
-
 	res_data = [{
 		"type": 'text',
 		"content": "Your order has been submitted."
 	},{
 		"type": 'card',
 		"content": {
-			"title": selected_product.name,
-			"subtitle": selected_product.price_text,
+			"title": memory.selected_product.title,
+			"subtitle": memory.selected_product.subtitle,
 			"imageUrl": ''
 		}
 	}];

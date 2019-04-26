@@ -35,7 +35,7 @@ app.post('/catalog/order', function (req, res) {
 
  	data = api.call_api_catalog_purchase(memory);
  	memory.selected_product = data.selected_product;
- 	
+
  	res.json({
     	replies: data.reply,
       	conversation: {
@@ -49,16 +49,11 @@ app.post('/catalog/submit', function (req, res) {
 
 	var memory = req.body.conversation.memory;
 
- 	api.call_api_catalog_submit(memory)
- 	.then(function(data){
-    	console.log(data);
- 		res.json({
-    	  replies: data
-    	});
- 	})
-	.catch(function (err) {
-		console.log(err);
-	});	
+ 	data = api.call_api_catalog_submit(memory);
+
+ 	res.json({
+    	replies: data
+    });
 });
 
 app.post('/worker_req/create', function (req, res) {
