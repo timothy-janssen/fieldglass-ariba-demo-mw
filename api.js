@@ -136,9 +136,9 @@ exports.call_api_catalog_search = function(memory){
 
 	var query;
 	if(memory.product) {
-		query = memory.product[0].raw;
+		query = JSON.parse(memory.product)[0].raw;
 	} else if (memory.organization) {
-		query = memory.organization[0].raw;
+		query = JSON.parse(memory.organization)[0].raw;
 	}
 
 	console.log("query: " + query);

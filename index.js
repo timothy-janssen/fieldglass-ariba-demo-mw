@@ -11,8 +11,7 @@ app.post('/catalog/search', function (req, res) {
 	console.log("[POST] /catalog/search");
 
 	var memory_ = req.body.conversation.memory;
-	var memory  = JSON.parse(memory_);
-	
+
  	api.call_api_catalog_search(memory)
  	.then(function(data){
  		memory.catalog = data.catalog_elements;
@@ -32,7 +31,7 @@ app.post('/catalog/search', function (req, res) {
 app.post('/catalog/order', function (req, res) { 
 	console.log("[POST] /catalog/order");
 
-	var memory = JSON.parse(req.body.conversation.memory);
+	var memory = req.body.conversation.memory;
 
  	data = api.call_api_catalog_purchase(memory);
  	memory.selected_product = data.selected_product;
@@ -48,7 +47,7 @@ app.post('/catalog/order', function (req, res) {
 app.post('/catalog/submit', function (req, res) {
 	console.log("[POST] /catalog/order");
 
-	var memory = JSON.parse(req.body.conversation.memory);
+	var memory = req.body.conversation.memory;
 
  	data = api.call_api_catalog_submit(memory);
 
@@ -59,8 +58,8 @@ app.post('/catalog/submit', function (req, res) {
 
 app.post('/worker_req/create', function (req, res) {
 	console.log("[POST] /worker_req/create");
-	
-	var memory = JSON.parse(req.body.conversation.memory);
+
+	var memory = req.body.conversation.memory;
 
 	if(!memory.fg_token) {
 		api.get_fg_token()
@@ -94,8 +93,8 @@ app.post('/worker_req/create', function (req, res) {
 
 app.post('/worker_req/submit', function (req, res) {
 	console.log("[POST] /worker_req/submit");
-	
-	var memory = JSON.parse(req.body.conversation.memory);
+
+	var memory = req.body.conversation.memory;
 
 	if(!memory.fg_token) {
 		api.get_fg_token()
