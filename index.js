@@ -50,7 +50,7 @@ app.post('/worker_req/create', function (req, res) {
 		api.get_fg_token()
 		.then(function(fg_token_data){
 			memory.fg_token = fg_token_data;
- 			api.call_api_worker_req_create(memory.fg_token)
+ 			api.call_api_worker_req_create(memory.fg_token, memory)
  			.then(function(data){
  				res.json({
     			  replies: data
@@ -61,7 +61,7 @@ app.post('/worker_req/create', function (req, res) {
 			});			
 		})
 	} else {
- 		api.call_api_worker_req_create(memory.fg_token)
+ 		api.call_api_worker_req_create(memory.fg_token, memory)
  		.then(function(data){
  			res.json({
     		  replies: data

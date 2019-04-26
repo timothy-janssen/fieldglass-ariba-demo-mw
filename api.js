@@ -1,4 +1,5 @@
 var request = require('request-promise');
+var dateFormat = require('dateformat');
 
 exports.get_fg_token = function(memory){
 	var post_options = {
@@ -23,7 +24,7 @@ exports.get_fg_token = function(memory){
 	})	
 }
 
-exports.call_api_worker_req_create = function(token_data){	
+exports.call_api_worker_req_create = function(token_data, memory){	
 	post_options = {
 		uri:    "https://psg4.fgvms.com/api/v1/saphire-demo/job-postings",
 	   	method:  "POST",
@@ -41,6 +42,12 @@ exports.call_api_worker_req_create = function(token_data){
 		title = data.jobTitle;
 		code = data.jobCode;
 		status = data.status;
+
+		var date = new Date();
+		start_date = dateFormat(date, "mmmm dS, yyyy");
+		date.setDate(date.getDate() + memory.duration.days);
+		end_date = dateFormat(now, "mmmm dS, yyyy");
+
 		res_data = [{
 			"type": 'text',
 			"content": "Okay. Would you like to submit this requisition request"
@@ -104,13 +111,7 @@ exports.call_api_worker_req_submit = function(token_data){
 			"content": {
 		    	"title": title,
 		    	"subtitle": code,
-		    	"imageUrl": '',
-		    	"details": {
-    	        	"Posted by": "Jada Baker",
-    	        	"Location": "Boston (1710-2017)",
-    	        	"Start Date": "AUG/01/2018",
-    	        	"End Date": "AUG/01/2019"
-    	        }
+		    	"imageUrl": ''
 		    }
 		}];
 		return res_data;
