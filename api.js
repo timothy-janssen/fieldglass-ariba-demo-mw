@@ -203,9 +203,9 @@ exports.call_api_catalog_purchase = function(memory){
 	},{
 		"type": 'card',
 		"content": {
-	    	"title": item.ShortName,
-	    	"subtitle": item["Price.Amount"] + " " + item["Price.Currency.UniqueName"],
-	    	"imageUrl": item.Thumbnail
+	    	"title": item.title,
+	    	"subtitle": item.subtitle,
+	    	"imageUrl": item.imageUrl
 	    }
 	},{
     	"type": "quickReplies",
