@@ -28,10 +28,10 @@ app.post('/catalog/search', function (req, res) {
 	});	
 });
 
-app.post('/catalog/order', function (req, res) {
+app.post('/catalog/order', function (req, res) { 
 	console.log("[POST] /catalog/order");
 
-	var memory = req.body.conversation.memory;
+	var memory = req.body.conversation.memory; 
 
  	data = api.call_api_catalog_purchase(memory);
  	memory.selected_product = data.selected_product;
