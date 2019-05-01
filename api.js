@@ -218,7 +218,7 @@ exports.call_api_catalog_purchase = function(memory){
 		},{
     		"type": "quickReplies",
     		"content": {
-    			"title": ""
+    			"title": "",
     		  	"buttons": [{
     		      	"value": "Yes",
     		      	"title": "Yes"
