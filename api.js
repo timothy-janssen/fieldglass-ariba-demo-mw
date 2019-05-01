@@ -212,7 +212,8 @@ exports.call_api_catalog_purchase = function(memory){
 			"content": {
 		    	"title": item.title,
 		    	"subtitle": item.subtitle,
-		    	"imageUrl": item.imageUrl
+		    	"imageUrl": item.imageUrl,
+		    	"buttons": []
 		    }
 		}];
 	} else {
@@ -254,7 +255,8 @@ exports.call_api_catalog_submit = function(memory){
 		"content": {
 			"title": memory.selected_product.title,
 			"subtitle": memory.selected_product.subtitle,
-			"imageUrl": ''
+			"imageUrl": '',
+			"buttons": []
 		}
 	}];
 	return res_data;
