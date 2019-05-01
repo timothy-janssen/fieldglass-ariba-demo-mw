@@ -161,7 +161,7 @@ exports.call_api_catalog_search = function(memory){
     	            "type": "postback"
     	        }]
     	    }
-    	    
+
     	    if(!memory.cai_webchat_test){
     	    	list_item.details = {
     	        	"Supplier Name": elem.SupplierName,
@@ -238,8 +238,6 @@ exports.call_api_catalog_purchase = function(memory){
     		  }]
     	}}];
 	}
-
-
 
     res_data.selected_product = item;
   
