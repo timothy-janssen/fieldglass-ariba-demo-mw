@@ -60,6 +60,7 @@ exports.call_api_worker_req_create = function(token_data, memory){
 		},{
       		"type": "quickReplies",
       		"content": {
+      			"title": "",
       		  	"buttons": [{
       		      	"value": "Yes",
       		      	"title": "Yes"
@@ -103,7 +104,8 @@ exports.call_api_worker_req_submit = function(token_data){
 			"content": {
 		    	"title": title,
 		    	"subtitle": code,
-		    	"imageUrl": ''
+		    	"imageUrl": '',
+	    		"buttons": []
 		    }
 		}];
 		return res_data;
