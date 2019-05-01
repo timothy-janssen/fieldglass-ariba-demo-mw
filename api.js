@@ -203,54 +203,29 @@ exports.call_api_catalog_purchase = function(memory){
 	catalog = memory.catalog;
 	item = catalog[rank];
 
-	if(memory.cai_webchat_test){
-		res_data.reply = [{
-			"type": 'text',
-			"content": "Are you sure you want to order this?"
-		},{
-			"type": 'card',
-			"content": {
-		    	"title": item.title,
-		    	"subtitle": item.subtitle,
-		    	"imageUrl": item.imageUrl,
-		    	"buttons": []
-		    }
-		},{
-    		"type": "quickReplies",
-    		"content": {
-    			"title": "",
-    		  	"buttons": [{
-    		      	"value": "Yes",
-    		      	"title": "Yes"
-    		    },{
-    		     	"value": "No",
-    		      	"title": "No"
-    		  	}]
-    	}}];
-	} else {
-		res_data.reply = [{
-			"type": 'text',
-			"content": "Are you sure you want to order this?"
-		},{
-			"type": 'card',
-			"content": {
-		    	"title": item.title,
-		    	"subtitle": item.subtitle,
-		    	"imageUrl": item.imageUrl
-		    }
-		},{
-    		"type": "quickReplies",
-    		"content": {
-    			"title": "",
-    		  	"buttons": [{
-    		  	    "value": "Yes",
-    		  	    "title": "Yes"
-    		  	},{
-    		  	    "value": "No",
-    		  	    "title": "No"
-    		  	}]
-    	}}];
-	}
+	res_data.reply = [{
+		"type": 'text',
+		"content": "Are you sure you want to order this?"
+	},{
+		"type": 'card',
+		"content": {
+	    	"title": item.title,
+	    	"subtitle": item.subtitle,
+	    	"imageUrl": item.imageUrl,
+	    	"buttons": []
+	    }
+	},{
+    	"type": "quickReplies",
+    	"content": {
+    		"title": "",
+    	  	"buttons": [{
+    	      	"value": "Yes",
+    	      	"title": "Yes"
+    	    },{
+    	     	"value": "No",
+    	      	"title": "No"
+    	  	}]
+    }}];
 
     res_data.selected_product = item;
   
