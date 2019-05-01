@@ -74,6 +74,10 @@ exports.call_api_worker_req_create = function(token_data, memory){
 	})
 	.catch(function (err) {
 		console.log(err);
+		return [{
+			"type": 'text',
+			"content": "There was an error with the backend call." 				   
+		}];
 	});
 };
 
@@ -112,6 +116,10 @@ exports.call_api_worker_req_submit = function(token_data){
 	})
 	.catch(function (err) {
 		console.log(err);
+		return [{
+			"type": 'text',
+			"content": "There was an error with the backend call." 				   
+		}];
 	});
 };
 
@@ -194,6 +202,12 @@ exports.call_api_catalog_search = function(memory){
 	})
 	.catch(function (err) {
 		console.log(err);
+		return [{
+			"reply": {
+				"type": 'text',
+				"content": "There was an error with the backend call."
+			}				   
+		}];
 	});
 };
 
