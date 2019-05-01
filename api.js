@@ -241,13 +241,14 @@ exports.call_api_catalog_purchase = function(memory){
 		},{
     		"type": "quickReplies",
     		"content": {
-    		  "buttons": [{
-    		      "value": "Yes",
-    		      "title": "Yes"
-    		    },{
-    		      "value": "No",
-    		      "title": "No"
-    		  }]
+    			"title": "",
+    		  	"buttons": [{
+    		  	    "value": "Yes",
+    		  	    "title": "Yes"
+    		  	},{
+    		  	    "value": "No",
+    		  	    "title": "No"
+    		  	}]
     	}}];
 	}
 
