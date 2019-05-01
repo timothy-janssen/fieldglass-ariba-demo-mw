@@ -215,7 +215,18 @@ exports.call_api_catalog_purchase = function(memory){
 		    	"imageUrl": item.imageUrl,
 		    	"buttons": []
 		    }
-		}];
+		},{
+    		"type": "quickReplies",
+    		"content": {
+    			"title": ""
+    		  	"buttons": [{
+    		      	"value": "Yes",
+    		      	"title": "Yes"
+    		    },{
+    		     	"value": "No",
+    		      	"title": "No"
+    		  	}]
+    	}}];
 	} else {
 		res_data.reply = [{
 			"type": 'text',
