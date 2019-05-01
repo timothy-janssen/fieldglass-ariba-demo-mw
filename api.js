@@ -150,6 +150,7 @@ exports.call_api_catalog_search = function(memory){
 
 		var count = 0;
 		req_data.contents.forEach( function(elem){
+
 			var list_item = {
     	        "title": elem.ShortName,
     	        "imageUrl": elem.Thumbnail,
@@ -158,8 +159,11 @@ exports.call_api_catalog_search = function(memory){
     	            "value": "Buy the " + ordinal_values[count] + " item",
     	            "title": "Order",
     	            "type": "postback"
-    	        }],
-    	        "details": {
+    	        }]
+    	    }
+    	    
+    	    if(!memory.cai_webchat_test){
+    	    	list_item.details = {
     	        	"Supplier Name": elem.SupplierName,
     	        	"Supplier Part ID": elem.SupplierPartId,
     	        	"Manufacturer Name": elem.ManufacturerName,
@@ -168,7 +172,7 @@ exports.call_api_catalog_search = function(memory){
     	        	"Price": elem["Price.Amount"],
     	        	"Currency": elem["Price.Currency.UniqueName"]
     	        }
-    	    }
+			}
 			catalog_elements.push(list_item);
 			count++;
 		});
@@ -199,27 +203,43 @@ exports.call_api_catalog_purchase = function(memory){
 	catalog = memory.catalog;
 	item = catalog[rank];
 
-	res_data.reply = [{
-		"type": 'text',
-		"content": "Are you sure you want to order this?"
-	},{
-		"type": 'card',
-		"content": {
-	    	"title": item.title,
-	    	"subtitle": item.subtitle,
-	    	"imageUrl": item.imageUrl
-	    }
-	},{
-    	"type": "quickReplies",
-    	"content": {
-    	  "buttons": [{
-    	      "value": "Yes",
-    	      "title": "Yes"
-    	    },{
-    	      "value": "No",
-    	      "title": "No"
-    	  }]
-    }}];
+	if(memory.cai_webchat_test){
+		res_data.reply = [{
+			"type": 'text',
+			"content": "Are you sure you want to order this?"
+		},{
+			"type": 'card',
+			"content": {
+		    	"title": item.title,
+		    	"subtitle": item.subtitle,
+		    	"imageUrl": item.imageUrl
+		    }
+		}];
+	} else {
+		res_data.reply = [{
+			"type": 'text',
+			"content": "Are you sure you want to order this?"
+		},{
+			"type": 'card',
+			"content": {
+		    	"title": item.title,
+		    	"subtitle": item.subtitle,
+		    	"imageUrl": item.imageUrl
+		    }
+		},{
+    		"type": "quickReplies",
+    		"content": {
+    		  "buttons": [{
+    		      "value": "Yes",
+    		      "title": "Yes"
+    		    },{
+    		      "value": "No",
+    		      "title": "No"
+    		  }]
+    	}}];
+	}
+
+
 
     res_data.selected_product = item;
   
