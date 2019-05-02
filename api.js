@@ -1,5 +1,6 @@
 var request = require('request-promise');
 var dateFormat = require('dateformat');
+var pw = require('./credentials');
 
 exports.get_fg_token = function(memory){
 	var post_options = {
@@ -7,8 +8,8 @@ exports.get_fg_token = function(memory){
 	    method:  "POST",
 	    headers: {
 	    	"Content-Type": "application/x-www-form-urlencoded",
-	    	"Authorization": "Basic SmFkYS5CYWtlcjpmaWVsZGdsYXNz",
-	    	"X-ApplicationKey": "5c91f4fdb0c6ee9992ff476f89bf6cf25e589350"
+	    	"Authorization": pw.FG_AUTH,
+	    	"X-ApplicationKey": pw.FG_APP_KEY_TOKEN
 	    },
 	    form: {
 	    	"grant_type": "client_credentials",
@@ -31,7 +32,7 @@ exports.call_api_worker_req_create = function(token_data, memory){
 	   	headers: {
 	   		"Content-Type": "application/json",
 	   		"Authorization": token_data.access_token || "",
-	   		"X-ApplicationKey": "9tH7u7t8gXGgG8JqZYQ9qtxDKu8Z9vz5"
+	   		"X-ApplicationKey":pw.FG_APP_KEY  
 	   	}
 	}
 
@@ -148,7 +149,7 @@ exports.call_api_catalog_search = function(memory){
 	    method:  "GET",
 	    json:    true,
 	    headers: {
-	    	"apiKey": "e874e8a3c6804e52af2de4c4b1fdb242"
+	    	"apiKey": pw.ARIBA_APP_KEY
 	    }
 	};
 
