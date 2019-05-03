@@ -1,6 +1,6 @@
 module.exports = {
-   FG_AUTH: "Basic SmFkYS5CYWtlcjpmaWVsZGdsYXNz",
-   FG_APP_KEY_TOKEN: "5c91f4fdb0c6ee9992ff476f89bf6cf25e589350",
-   FG_APP_KEY: "9tH7u7t8gXGgG8JqZYQ9qtxDKu8Z9vz5",
-   ARIBA_APP_KEY: "e874e8a3c6804e52af2de4c4b1fdb242"
+   FG_AUTH: "Basic " + process.env.FG_AUTH || "Your FG_AUTH",
+   FG_APP_KEY_TOKEN: process.env.FG_APP_KEY_TOKEN || "Your FG_APP_KEY_TOKEN",
+   FG_APP_KEY: process.env.FG_APP_KEY || "Your FG_APP_KEY",
+   ARIBA_APP_KEY: process.env.ARIBA_APP_KEY || "Your ARIBA_APP_KEY"
 };
