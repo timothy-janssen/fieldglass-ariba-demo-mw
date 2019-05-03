@@ -2,7 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var config = require('./config');
 
-var api     = require('./api.js');
+var api = require('./api.js');
 
 var app = express();
 app.use(bodyParser.json());
