@@ -1,6 +1,6 @@
 var request = require('request-promise');
 var dateFormat = require('dateformat');
-var pw = require('./credentials');
+var pw = require('./credentials.js');
 
 exports.get_fg_token = function(memory){
 	var post_options = {
