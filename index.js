@@ -141,7 +141,7 @@ app.post('/test/flip', function (req, res) {
     	conversation: {
    			memory: memory
     	}  
-    );
+    });
 });
 
 // Recast will send a post request to /errors to notify errors
