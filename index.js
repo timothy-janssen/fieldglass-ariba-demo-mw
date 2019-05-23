@@ -142,7 +142,7 @@ app.post('/test/flip', function (req, res) {
     		replies: {
 				"type": 'text',
 				"content": "FLIP"
-			}
+			},
    			memory: memory
     	}  
     });
