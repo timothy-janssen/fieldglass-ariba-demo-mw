@@ -137,11 +137,11 @@ app.post('/test/flip', function (req, res) {
 	memory.flip = Math.random() < 0.5 ;
 
 	res.json({
+		replies: [{
+			"type": 'text',
+			"content": "FLIP: " + memory.flip 
+		}],
     	conversation: {
-    		replies: [{
-				"type": 'text',
-				"content": "FLIP: "
-			}],
    			memory: memory
     	}  
     });
