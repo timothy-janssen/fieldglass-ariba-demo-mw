@@ -134,14 +134,13 @@ app.post('/worker_req/submit', function (req, res) {
 
 app.post('/test/flip', function (req, res) {
 	var memory = req.body.conversation.memory;
-
 	memory.flip = Math.random() < 0.5 ;
 
 	res.json({
     	conversation: {
     		replies: {
 				"type": 'text',
-				"content": "FLIP"
+				"content": "FLIP: " + memory.flip
 			},
    			memory: memory
     	}  
