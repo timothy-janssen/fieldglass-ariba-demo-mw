@@ -138,7 +138,7 @@ app.post('/test/flip', function (req, res) {
 
 	res.json({
     	conversation: {
-    		replies: [],
+    		replies: {},
    			memory: memory
     	}  
     });
