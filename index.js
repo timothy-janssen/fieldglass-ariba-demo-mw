@@ -139,7 +139,7 @@ app.post('/test/flip', function (req, res) {
 	res.json({
 		replies: [{
 			"type": 'text',
-			"content": "FLIP: " + memory.flip 
+			"content": "There was not an error with the backend call." 				   
 		}],
     	conversation: {
    			memory: memory
