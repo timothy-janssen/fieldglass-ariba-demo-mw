@@ -131,6 +131,19 @@ app.post('/worker_req/submit', function (req, res) {
 
 });
 
+
+app.post('/test/flip', function (req, res) {
+	var memory = req.body.conversation.memory;
+
+	memory.flip = Math.random() < 0.5 ;
+
+	res.json({
+    	conversation: {
+   			memory: memory
+    	}  
+    );
+});
+
 // Recast will send a post request to /errors to notify errors
 app.post('/errors', (req, res) => {
    console.error(req.body);
