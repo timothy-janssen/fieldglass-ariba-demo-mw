@@ -131,7 +131,36 @@ app.post('/worker_req/submit', function (req, res) {
 
 });
 
+app.post('/twm/sfsf/show-list-of-positions', function (req, res) {
 
+	res.json({
+		replies: [{
+		  "type": "text",
+		  "content": "Here are your 3 open positions"
+		},{
+    	  "type": "list",
+    	  "content": {
+    	  	"title" : "Open Positions",
+    	    "elements": [{
+    	    	    "title": "Marketing Coordinator (4410)",
+    	    	    "subtitle": "MC Automotive",
+    	    	    "subtitle2": "Open for 2 months"
+    	    	},{
+    	    	    "title": "Compensation Administrator US (900284)",
+    	    	    "subtitle": "MC Corporate",
+    	    	    "subtitle2": "Open for 3 months"
+    	    	},{
+    	    	    "title": "HR Coordinator (900132)",
+    	    	    "subtitle": "MC Corporate",
+    	    	    "subtitle2": "Open for 2 months"
+    	    	}
+    	    ] 
+    	  }
+    	}]
+    });
+});
+
+// returns a random boolean - not for twm demo
 app.post('/test/flip', function (req, res) {
 	var memory = req.body.conversation.memory;
 	memory.flip = Math.random() < 0.5 ;
