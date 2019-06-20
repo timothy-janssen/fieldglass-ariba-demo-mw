@@ -135,7 +135,7 @@ app.post('/twm/sfsf/show-list-of-positions', function (req, res) {
 	var reply = [{
 		  "type": "text",
 		  "content": "Here are your 3 open positions"
-		}/*,{
+		},{
     	  "type": "list",
     	  "content": {
     	  	"title" : "Open Positions",
@@ -154,7 +154,7 @@ app.post('/twm/sfsf/show-list-of-positions', function (req, res) {
     	    	}
     	    ] 
     	  }
-    	}*/];
+    	}];
 
 	res.json({
 		replies: reply
