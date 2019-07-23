@@ -115,7 +115,14 @@ app.post('/worker_req/submit', function (req, res) {
 			.catch(function (err) {
 				console.log(err);
 			});				
-		})
+		}).catch(function (err) {
+      res.json({
+        replies: [{
+          "type": 'text',
+          "content": "There was an error getting the FG token"           
+        }]
+      });
+    })
 	} else {
  		api.call_api_worker_req_submit(memory.fg_token)
  		.then(function(data){
