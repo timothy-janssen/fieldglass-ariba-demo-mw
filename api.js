@@ -4,7 +4,7 @@ var pw = require('./credentials.js');
 
 exports.get_fg_token = function(memory){
 	var post_options = {
-	    uri:    "https://psg4.fgvms.com/api/oauth2/v2.0/token ", // token call
+	    uri:    "https://psg4.fgvms.com/api/oauth2/v2.0/token", // token call
 	    method:  "POST",
 	    headers: {
 	    	"Content-Type": "application/x-www-form-urlencoded",
