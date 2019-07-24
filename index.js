@@ -80,7 +80,14 @@ app.post('/worker_req/create', function (req, res) {
 			.catch(function (err) {
 				console.log(err);
 			});			
-		})
+		}).catch(function (err) {
+      res.json({
+        replies: [{
+          "type": 'text',
+          "content": "There was an error getting the FG token"           
+        }]
+      });
+    })
 	} else {
  		api.call_api_worker_req_create(memory.fg_token, memory)
  		.then(function(data){
