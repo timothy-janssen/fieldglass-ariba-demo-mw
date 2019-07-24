@@ -81,6 +81,8 @@ app.post('/worker_req/create', function (req, res) {
 				console.log(err);
 			});			
 		}).catch(function (err) {
+      console.log(err);
+      
       res.json({
         replies: [{
           "type": 'text',
