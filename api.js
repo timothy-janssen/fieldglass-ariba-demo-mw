@@ -144,6 +144,8 @@ exports.call_api_catalog_search = function(memory){
 	var query     	= query_obj      ? query_obj[0].raw.charAt(0).toUpperCase() + query_obj[0].raw.slice(1) : undefined;	
 	var opts 		= query 		 ? "?realm=mytestrealm&rsqlfilter=QueryTerms==" + query : "?realm=mytestrealm";
 
+	console.log('Catalog search term: ' + query)
+
 	var get_options = {
 	    uri:    "https://openapi.ariba.com/api/catalog-search/v1/sandbox/search/items" + opts,
 	    method:  "GET",
