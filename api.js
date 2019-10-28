@@ -149,7 +149,7 @@ exports.call_api_catalog_search = function(memory){
 	var get_options = {
 	    uri:    "https://openapi.ariba.com/api/catalog-search/v1/sandbox/search/items" + opts,
 	    method:  "GET",
-	    json:    true,
+	    //json:    true,
 	    headers: {
 	    	"apiKey": pw.ARIBA_APP_KEY
 	    }
